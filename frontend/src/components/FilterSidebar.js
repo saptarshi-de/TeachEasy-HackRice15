@@ -2,6 +2,24 @@ import React from 'react';
 
 const FilterSidebar = ({ filters, onFilterChange, onClearFilters }) => {
   const regions = ['North', 'South', 'East', 'West', 'Central', 'Northeast', 'Northwest', 'Southeast', 'Southwest'];
+  const districts = [
+    // Houston Area
+    'Houston ISD', 'Katy ISD', 'Cypress-Fairbanks ISD', 'Spring ISD', 'Klein ISD', 'Aldine ISD',
+    'Fort Bend ISD', 'Alief ISD', 'Pasadena ISD', 'Clear Creek ISD', 'Pearland ISD',
+    // Dallas Area
+    'Dallas ISD', 'Plano ISD', 'Richardson ISD', 'Garland ISD', 'Mesquite ISD', 'Irving ISD',
+    'Frisco ISD', 'McKinney ISD', 'Allen ISD', 'Lewisville ISD',
+    // Austin Area
+    'Austin ISD', 'Round Rock ISD', 'Leander ISD', 'Pflugerville ISD', 'Lake Travis ISD',
+    // San Antonio Area
+    'San Antonio ISD', 'Northside ISD', 'North East ISD', 'Judson ISD', 'East Central ISD',
+    // Other Major Districts
+    'Fort Worth ISD', 'Arlington ISD', 'El Paso ISD', 'Corpus Christi ISD', 'Lubbock ISD',
+    'Amarillo ISD', 'Laredo ISD', 'Brownsville ISD', 'McAllen ISD', 'Waco ISD',
+    'Killeen ISD', 'Tyler ISD', 'Beaumont ISD', 'Bryan ISD', 'College Station ISD',
+    // Statewide/National
+    'Statewide', 'National', 'International'
+  ];
   const gradeLevels = ['Pre-K', 'K', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', 'College', 'Adult Education'];
   const subjects = ['Mathematics', 'Science', 'English/Language Arts', 'Social Studies', 'History', 'Art', 'Music', 'Physical Education', 'Foreign Language', 'Computer Science', 'Special Education', 'ESL/ELL', 'Reading', 'Writing'];
   const fundingTypes = ['Classroom Supplies', 'Technology Equipment', 'Books and Materials', 'Professional Development', 'Field Trips', 'Special Programs', 'Student Support', 'Classroom Furniture', 'STEM Materials'];
@@ -70,6 +88,24 @@ const FilterSidebar = ({ filters, onFilterChange, onClearFilters }) => {
                 onChange={() => handleCheckboxChange('regions', region)}
               />
               <label htmlFor={`region-${region}`}>{region}</label>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* School Districts */}
+      <div className="filter-group">
+        <label className="filter-label">School Districts</label>
+        <div className="filter-options" style={{maxHeight: '200px', overflowY: 'auto'}}>
+          {districts.map(district => (
+            <div key={district} className="filter-option">
+              <input
+                type="checkbox"
+                id={`district-${district}`}
+                checked={filters.districts?.includes(district) || false}
+                onChange={() => handleCheckboxChange('districts', district)}
+              />
+              <label htmlFor={`district-${district}`}>{district}</label>
             </div>
           ))}
         </div>

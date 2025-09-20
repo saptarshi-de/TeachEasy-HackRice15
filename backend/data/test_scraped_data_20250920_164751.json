@@ -1,0 +1,160 @@
+[
+  {
+    "title": "STEM Classroom Innovation Grant",
+    "description": "Funding for K-12 teachers to implement innovative STEM projects in their classrooms. Supports hands-on learning experiences and technology integration.",
+    "organization": "National Science Foundation",
+    "website": "https://www.nsf.gov",
+    "amount": {
+      "min": 5000,
+      "max": 25000,
+      "currency": "USD"
+    },
+    "eligibility": {
+      "gradeLevels": [
+        "K",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12"
+      ],
+      "subjects": [
+        "Science",
+        "Mathematics",
+        "Computer Science"
+      ],
+      "regions": [
+        "National"
+      ],
+      "districts": [
+        "National"
+      ],
+      "fundingTypes": [
+        "Technology Equipment",
+        "STEM Materials",
+        "Classroom Supplies"
+      ],
+      "requirements": "Must be a certified teacher with at least 2 years of experience. School must be public or charter."
+    },
+    "application": {
+      "deadline": "2024-12-31",
+      "applicationUrl": "https://www.nsf.gov/grants",
+      "applicationMethod": "Online",
+      "documentsRequired": [
+        "Resume/CV",
+        "Budget Proposal",
+        "School Information",
+        "Essay"
+      ],
+      "isRecurring": true,
+      "nextDeadline": "2025-12-31"
+    },
+    "contact": {
+      "email": "stem-grants@nsf.gov",
+      "phone": "(703) 292-5111"
+    },
+    "tags": [
+      "STEM",
+      "Innovation",
+      "Technology",
+      "K-12"
+    ],
+    "difficulty": "Medium",
+    "popularity": 85,
+    "isActive": true,
+    "isVerified": true,
+    "viewCount": 0,
+    "bookmarkCount": 0,
+    "createdAt": "2025-09-20T16:47:51.180380",
+    "updatedAt": "2025-09-20T16:47:51.180399",
+    "publishedAt": "2025-09-20T16:47:51.180400"
+  },
+  {
+    "title": "Rural Education Enhancement Fund",
+    "description": "Grants specifically for teachers in rural areas to improve educational resources and student outcomes. Focus on closing the rural-urban education gap.",
+    "organization": "Rural Education Foundation",
+    "website": "https://www.ruraleducation.org",
+    "amount": {
+      "min": 2000,
+      "max": 15000,
+      "currency": "USD"
+    },
+    "eligibility": {
+      "gradeLevels": [
+        "Pre-K",
+        "K",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12"
+      ],
+      "subjects": [
+        "Any"
+      ],
+      "regions": [
+        "Central",
+        "Southwest",
+        "Southeast"
+      ],
+      "districts": [
+        "Houston ISD",
+        "Katy ISD",
+        "Dallas ISD",
+        "Austin ISD"
+      ],
+      "fundingTypes": [
+        "Classroom Supplies",
+        "Books and Materials",
+        "Technology Equipment",
+        "Professional Development"
+      ],
+      "requirements": "Must teach in a school district with fewer than 10,000 students. Priority given to high-need schools."
+    },
+    "application": {
+      "deadline": "2024-11-15",
+      "applicationUrl": "https://www.ruraleducation.org/apply",
+      "applicationMethod": "Online",
+      "documentsRequired": [
+        "Resume/CV",
+        "School Information",
+        "Budget Proposal"
+      ],
+      "isRecurring": true,
+      "nextDeadline": "2025-11-15"
+    },
+    "contact": {
+      "email": "grants@ruraleducation.org",
+      "phone": "(555) 123-4567"
+    },
+    "tags": [
+      "Rural",
+      "Equity",
+      "Resources",
+      "Community"
+    ],
+    "difficulty": "Easy",
+    "popularity": 72,
+    "isActive": true,
+    "isVerified": true,
+    "viewCount": 0,
+    "bookmarkCount": 0,
+    "createdAt": "2025-09-20T16:47:51.180406",
+    "updatedAt": "2025-09-20T16:47:51.180407",
+    "publishedAt": "2025-09-20T16:47:51.180408"
+  }
+]

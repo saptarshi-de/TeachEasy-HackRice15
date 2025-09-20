@@ -64,6 +64,28 @@ const scholarshipSchema = new mongoose.Schema({
       enum: ['North', 'South', 'East', 'West', 'Central', 'Northeast', 'Northwest', 'Southeast', 'Southwest', 'National', 'International']
     }],
     
+    districts: [{
+      type: String,
+      enum: [
+        // Houston Area
+        'Houston ISD', 'Katy ISD', 'Cypress-Fairbanks ISD', 'Spring ISD', 'Klein ISD', 'Aldine ISD',
+        'Fort Bend ISD', 'Alief ISD', 'Pasadena ISD', 'Clear Creek ISD', 'Pearland ISD',
+        // Dallas Area
+        'Dallas ISD', 'Plano ISD', 'Richardson ISD', 'Garland ISD', 'Mesquite ISD', 'Irving ISD',
+        'Frisco ISD', 'McKinney ISD', 'Allen ISD', 'Lewisville ISD',
+        // Austin Area
+        'Austin ISD', 'Round Rock ISD', 'Leander ISD', 'Pflugerville ISD', 'Lake Travis ISD',
+        // San Antonio Area
+        'San Antonio ISD', 'Northside ISD', 'North East ISD', 'Judson ISD', 'East Central ISD',
+        // Other Major Districts
+        'Fort Worth ISD', 'Arlington ISD', 'El Paso ISD', 'Corpus Christi ISD', 'Lubbock ISD',
+        'Amarillo ISD', 'Laredo ISD', 'Brownsville ISD', 'McAllen ISD', 'Waco ISD',
+        'Killeen ISD', 'Tyler ISD', 'Beaumont ISD', 'Bryan ISD', 'College Station ISD',
+        // Statewide/National
+        'Statewide', 'National', 'International'
+      ]
+    }],
+    
     fundingTypes: [{
       type: String,
       enum: [
