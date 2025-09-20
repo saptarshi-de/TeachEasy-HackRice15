@@ -1,0 +1,212 @@
+const mongoose = require('mongoose');
+
+const scholarshipSchema = new mongoose.Schema({
+  // Basic information
+  title: {
+    type: String,
+    required: true,
+    trim: true
+  },
+  
+  description: {
+    type: String,
+    required: true
+  },
+  
+  organization: {
+    type: String,
+    required: true,
+    trim: true
+  },
+  
+  website: {
+    type: String,
+    default: null
+  },
+  
+  // Funding details
+  amount: {
+    min: {
+      type: Number,
+      required: true,
+      min: 0
+    },
+    max: {
+      type: Number,
+      required: true,
+      min: 0
+    },
+    currency: {
+      type: String,
+      default: 'USD',
+      enum: ['USD', 'CAD', 'EUR', 'GBP']
+    }
+  },
+  
+  // Eligibility criteria
+  eligibility: {
+    gradeLevels: [{
+      type: String,
+      enum: ['Pre-K', 'K', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', 'College', 'Adult Education']
+    }],
+    
+    subjects: [{
+      type: String,
+      enum: [
+        'Mathematics', 'Science', 'English/Language Arts', 'Social Studies', 'History',
+        'Art', 'Music', 'Physical Education', 'Foreign Language', 'Computer Science',
+        'Special Education', 'ESL/ELL', 'Reading', 'Writing', 'Any', 'Other'
+      ]
+    }],
+    
+    regions: [{
+      type: String,
+      enum: ['North', 'South', 'East', 'West', 'Central', 'Northeast', 'Northwest', 'Southeast', 'Southwest', 'National', 'International']
+    }],
+    
+    fundingTypes: [{
+      type: String,
+      enum: [
+        'Classroom Supplies', 'Technology Equipment', 'Books and Materials',
+        'Professional Development', 'Field Trips', 'Special Programs',
+        'Student Support', 'Classroom Furniture', 'STEM Materials', 'General', 'Other'
+      ]
+    }],
+    
+    requirements: {
+      type: String,
+      default: ''
+    }
+  },
+  
+  // Application details
+  application: {
+    deadline: {
+      type: Date,
+      required: true
+    },
+    
+    applicationUrl: {
+      type: String,
+      default: null
+    },
+    
+    applicationMethod: {
+      type: String,
+      enum: ['Online', 'Email', 'Mail', 'Phone', 'In-Person'],
+      default: 'Online'
+    },
+    
+    documentsRequired: [{
+      type: String,
+      enum: ['Resume/CV', 'Cover Letter', 'Essay', 'Recommendation Letters', 'Budget Proposal', 'School Information', 'Other']
+    }],
+    
+    isRecurring: {
+      type: Boolean,
+      default: false
+    },
+    
+    nextDeadline: {
+      type: Date,
+      default: null
+    }
+  },
+  
+  // Contact information
+  contact: {
+    email: {
+      type: String,
+      default: null
+    },
+    
+    phone: {
+      type: String,
+      default: null
+    },
+    
+    address: {
+      street: String,
+      city: String,
+      state: String,
+      zipCode: String,
+      country: String
+    }
+  },
+  
+  // Metadata
+  tags: [{
+    type: String,
+    trim: true
+  }],
+  
+  difficulty: {
+    type: String,
+    enum: ['Easy', 'Medium', 'Hard'],
+    default: 'Medium'
+  },
+  
+  popularity: {
+    type: Number,
+    default: 0,
+    min: 0
+  },
+  
+  // Status and visibility
+  isActive: {
+    type: Boolean,
+    default: true
+  },
+  
+  isVerified: {
+    type: Boolean,
+    default: false
+  },
+  
+  // Statistics
+  viewCount: {
+    type: Number,
+    default: 0
+  },
+  
+  bookmarkCount: {
+    type: Number,
+    default: 0
+  },
+  
+  // Timestamps
+  createdAt: {
+    type: Date,
+    default: Date.now
+  },
+  
+  updatedAt: {
+    type: Date,
+    default: Date.now
+  },
+  
+  publishedAt: {
+    type: Date,
+    default: Date.now
+  }
+});
+
+// Update the updatedAt field before saving
+scholarshipSchema.pre('save', function(next) {
+  this.updatedAt = Date.now();
+  next();
+});
+
+// Indexes for efficient queries
+scholarshipSchema.index({ title: 'text', description: 'text', organization: 'text' });
+scholarshipSchema.index({ 'amount.min': 1, 'amount.max': 1 });
+scholarshipSchema.index({ 'application.deadline': 1 });
+scholarshipSchema.index({ 'eligibility.regions': 1 });
+scholarshipSchema.index({ 'eligibility.gradeLevels': 1 });
+scholarshipSchema.index({ 'eligibility.subjects': 1 });
+scholarshipSchema.index({ 'eligibility.fundingTypes': 1 });
+scholarshipSchema.index({ isActive: 1, isVerified: 1 });
+scholarshipSchema.index({ popularity: -1 });
+scholarshipSchema.index({ createdAt: -1 });
+
+module.exports = mongoose.model('Scholarship', scholarshipSchema);
