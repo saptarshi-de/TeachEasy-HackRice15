@@ -4,6 +4,10 @@ import logging
 from datetime import datetime
 from typing import List, Dict
 from .education_grant_scraper import EducationGrantScraper
+from .grants_gov_scraper import GrantsGovScraper
+from .foundation_scraper import FoundationScraper
+from .corporate_scraper import CorporateScraper
+from .state_local_scraper import StateLocalScraper
 from .base_scraper import BaseScraper
 import json
 import os
@@ -18,7 +22,10 @@ class ScraperManager:
     def __init__(self):
         self.scrapers = [
             EducationGrantScraper(),
-            # Add more scrapers here as you implement them
+            GrantsGovScraper(),
+            FoundationScraper(),
+            CorporateScraper(),
+            StateLocalScraper()
         ]
         self.scraped_data = []
         

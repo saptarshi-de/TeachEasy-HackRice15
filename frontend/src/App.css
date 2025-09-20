@@ -408,3 +408,56 @@
 .bookmark-btn.bookmarked:hover {
   background: #bfdbfe;
 }
+
+/* Match Level Styling */
+.match-level {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.5rem 0;
+}
+
+.match-badge {
+  padding: 0.25rem 0.5rem;
+  border-radius: 12px;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.match-score {
+  font-size: 0.75rem;
+  color: #666;
+  font-weight: 500;
+}
+
+/* Grant Status Styling */
+.grant-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.5rem 0;
+}
+
+.status-badge {
+  padding: 0.25rem 0.5rem;
+  border-radius: 12px;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.days-until {
+  font-size: 0.75rem;
+  color: #666;
+  font-weight: 500;
+}
+
+/* Source Styling */
+.scholarship-source {
+  font-size: 0.875rem;
+  color: #666;
+  font-weight: 400;
+}

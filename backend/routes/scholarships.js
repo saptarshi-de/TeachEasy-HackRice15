@@ -3,6 +3,17 @@ const { body, validationResult, query } = require('express-validator');
 const Scholarship = require('../models/Scholarship');
 const User = require('../models/User');
 
+// AI Matcher is optional (Python module)
+let AIMatcher = null;
+try {
+  AIMatcher = require('../scrapers/ai_matcher');
+} catch (error) {
+  console.log('AI Matcher not available (Python module)');
+}
+
+// Use simple JavaScript matcher as fallback
+const SimpleMatcher = require('../utils/simpleMatcher');
+
 const router = express.Router();
 
 // Validation middleware
@@ -93,11 +104,12 @@ router.get('/', validateScholarshipQuery, async (req, res) => {
     const skip = (parseInt(page) - 1) * parseInt(limit);
 
     // Execute query
-    const scholarships = await Scholarship.find(filter)
+    let scholarships = await Scholarship.find(filter)
       .sort(sort)
       .skip(skip)
       .limit(parseInt(limit))
-      .select('-__v');
+      .select('-__v')
+      .lean();
 
     // Get total count for pagination
     const total = await Scholarship.countDocuments(filter);
@@ -106,6 +118,27 @@ router.get('/', validateScholarshipQuery, async (req, res) => {
     const totalPages = Math.ceil(total / parseInt(limit));
     const hasNextPage = page < totalPages;
     const hasPrevPage = page > 1;
+
+    // Add AI matching if user profile is provided
+    if (req.query.userProfile) {
+      try {
+        const userProfile = JSON.parse(req.query.userProfile);
+        
+        if (AIMatcher) {
+          // Use Python AI matcher if available
+          const matcher = new AIMatcher();
+          matcher.prepare_scholarship_data(scholarships);
+          scholarships = matcher.score_all_scholarships(userProfile, scholarships);
+        } else {
+          // Use simple JavaScript matcher as fallback
+          const matcher = new SimpleMatcher();
+          scholarships = matcher.scoreAllScholarships(userProfile, scholarships);
+        }
+      } catch (error) {
+        console.error('AI matching error:', error);
+        // Continue without AI matching if there's an error
+      }
+    }
 
     res.json({
       scholarships,

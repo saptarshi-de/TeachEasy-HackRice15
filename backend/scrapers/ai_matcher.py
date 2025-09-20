@@ -53,26 +53,58 @@ class AIMatcher:
         profile_text = ' '.join(filter(None, profile_parts))
         return self.vectorizer.transform([profile_text])
     
-    def find_matching_scholarships(self, user_profile: Dict, scholarships: List[Dict], 
-                                 top_k: int = 10) -> List[Tuple[Dict, float]]:
-        """Find scholarships that match user profile"""
+    def score_all_scholarships(self, user_profile: Dict, scholarships: List[Dict]) -> List[Dict]:
+        """Score ALL scholarships for user profile (no filtering)"""
         if not self.scholarship_vectors is not None:
             self.prepare_scholarship_data(scholarships)
         
         user_vector = self.calculate_user_profile_vector(user_profile)
         
-        # Calculate similarity scores
+        # Calculate similarity scores for ALL scholarships
         similarities = cosine_similarity(user_vector, self.scholarship_vectors).flatten()
         
-        # Get top matches
-        top_indices = np.argsort(similarities)[::-1][:top_k]
+        # Add scores to all scholarships
+        scored_scholarships = []
+        for i, scholarship in enumerate(scholarships):
+            # Calculate comprehensive match score
+            match_score = self.calculate_scholarship_score(scholarship, user_profile)
+            
+            # Calculate semantic similarity score
+            semantic_score = float(similarities[i]) if i < len(similarities) else 0.0
+            
+            # Calculate success prediction
+            success_prediction = self.predict_application_success(scholarship, user_profile)
+            
+            # Determine match level
+            match_level = self.determine_match_level(match_score, semantic_score, success_prediction)
+            
+            # Add scoring information to scholarship
+            scored_scholarship = scholarship.copy()
+            scored_scholarship['matchScore'] = round(match_score, 3)
+            scored_scholarship['semanticScore'] = round(semantic_score, 3)
+            scored_scholarship['successPrediction'] = round(success_prediction, 3)
+            scored_scholarship['matchLevel'] = match_level
+            scored_scholarship['overallScore'] = round((match_score + semantic_score + success_prediction) / 3, 3)
+            
+            scored_scholarships.append(scored_scholarship)
         
-        matches = []
-        for idx in top_indices:
-            if similarities[idx] > 0.1:  # Minimum similarity threshold
-                matches.append((scholarships[idx], float(similarities[idx])))
+        # Sort by overall score (highest first)
+        scored_scholarships.sort(key=lambda x: x['overallScore'], reverse=True)
         
-        return matches
+        return scored_scholarships
+    
+    def determine_match_level(self, match_score: float, semantic_score: float, success_prediction: float) -> str:
+        """Determine match level based on scores"""
+        overall_score = (match_score + semantic_score + success_prediction) / 3
+        
+        if overall_score >= 0.8:
+            return "High"
+        elif overall_score >= 0.6:
+            return "Medium"
+        elif overall_score >= 0.4:
+            return "Low"
+        else:
+            return "Very Low"
     
     def calculate_scholarship_score(self, scholarship: Dict, user_profile: Dict) -> float:
         """Calculate a comprehensive score for scholarship-user matching"""

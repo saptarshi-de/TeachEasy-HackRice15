@@ -61,7 +61,7 @@ const scholarshipSchema = new mongoose.Schema({
     
     regions: [{
       type: String,
-      enum: ['North', 'South', 'East', 'West', 'Central', 'Northeast', 'Northwest', 'Southeast', 'Southwest', 'National', 'International']
+      enum: ['North', 'South', 'East', 'West', 'Central', 'Northeast', 'Northwest', 'Southeast', 'Southwest', 'National', 'International', 'Rural Areas', 'Local Communities']
     }],
     
     districts: [{
@@ -82,7 +82,7 @@ const scholarshipSchema = new mongoose.Schema({
         'Amarillo ISD', 'Laredo ISD', 'Brownsville ISD', 'McAllen ISD', 'Waco ISD',
         'Killeen ISD', 'Tyler ISD', 'Beaumont ISD', 'Bryan ISD', 'College Station ISD',
         // Statewide/National
-        'Statewide', 'National', 'International'
+        'Statewide', 'National', 'International', 'Rural Districts', 'High-Need Districts', 'Local Districts', 'Texas Districts', 'California Districts', 'New York Districts'
       ]
     }],
     
@@ -121,7 +121,17 @@ const scholarshipSchema = new mongoose.Schema({
     
     documentsRequired: [{
       type: String,
-      enum: ['Resume/CV', 'Cover Letter', 'Essay', 'Recommendation Letters', 'Budget Proposal', 'School Information', 'Other']
+      enum: [
+        'Resume/CV', 'Cover Letter', 'Essay', 'Recommendation Letters', 'Budget Proposal', 'School Information', 'Other',
+        'Partnership Agreement', 'Program Plan', 'Program Description', 'Evaluation Plan', 'Rural Designation', 'Needs Assessment',
+        'Project Proposal', 'Budget', 'Letters of Recommendation', 'Equity Plan', 'Community Impact Statement',
+        'STEM Project Plan', 'Student Impact Statement', 'Research Proposal', 'Literature Review',
+        'Technology Integration Plan', 'School Support Letter', 'Google Tools Implementation Plan',
+        'STEM Project Proposal', 'Diversity Statement', 'Community Impact Plan', 'Local Support Letters',
+        'Digital Divide Assessment', 'Technology Plan', 'Professional Development Plan', 'Principal Recommendation',
+        'STEM Curriculum Plan', 'Innovation Proposal', 'Arts Integration Plan', 'Student Work Samples',
+        'STEM Program Plan', 'Student Outcomes', 'Student Impact Plan'
+      ]
     }],
     
     isRecurring: {
@@ -194,6 +204,48 @@ const scholarshipSchema = new mongoose.Schema({
   bookmarkCount: {
     type: Number,
     default: 0
+  },
+  
+  // AI Matching fields
+  status: {
+    type: String,
+    default: 'Open'
+  },
+  
+  source: {
+    type: String,
+    default: 'Unknown'
+  },
+  
+  matchLevel: {
+    type: String,
+    enum: ['High', 'Medium', 'Low', 'Very Low'],
+    default: 'Medium'
+  },
+  
+  matchScore: {
+    type: Number,
+    default: 0.5
+  },
+  
+  overallScore: {
+    type: Number,
+    default: 0.5
+  },
+  
+  semanticScore: {
+    type: Number,
+    default: 0.5
+  },
+  
+  successPrediction: {
+    type: Number,
+    default: 0.5
+  },
+  
+  daysUntilDeadline: {
+    type: Number,
+    default: null
   },
   
   // Timestamps

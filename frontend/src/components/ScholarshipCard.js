@@ -40,17 +40,78 @@ const ScholarshipCard = ({ scholarship, onBookmark, isBookmarked }) => {
     return 'text-gray-600';
   };
 
+  const getMatchLevelColor = (level) => {
+    switch (level) {
+      case 'High': return '#4CAF50';
+      case 'Medium': return '#FF9800';
+      case 'Low': return '#FFC107';
+      case 'Very Low': return '#9E9E9E';
+      default: return '#9E9E9E';
+    }
+  };
+
+  const getStatusColor = (status) => {
+    if (status.includes('Expired')) return '#F44336';
+    if (status.includes('Deadline Approaching')) return '#FF5722';
+    if (status.includes('Apply Soon')) return '#FF9800';
+    if (status.includes('Open')) return '#4CAF50';
+    return '#9E9E9E';
+  };
+
   return (
     <div className="scholarship-card">
       <div className="scholarship-card-header">
         <h3 className="scholarship-title">{scholarship.title}</h3>
-        <p className="scholarship-organization">{scholarship.organization}</p>
+        <p className="scholarship-organization">
+          {scholarship.organization}
+          {scholarship.source && (
+            <span className="scholarship-source"> • {scholarship.source}</span>
+          )}
+        </p>
         <div className="scholarship-amount">
           {formatAmount(scholarship.amount.min, scholarship.amount.max)}
         </div>
-        <p className={`scholarship-deadline ${getDeadlineClass(scholarship.application.deadline)}`}>
-          {formatDeadline(scholarship.application.deadline)}
-        </p>
+        
+        {/* AI Match Level */}
+        {scholarship.matchLevel && (
+          <div className="match-level">
+            <span 
+              className="match-badge"
+              style={{ backgroundColor: getMatchLevelColor(scholarship.matchLevel) }}
+            >
+              {scholarship.matchLevel} Match
+            </span>
+            {scholarship.overallScore && (
+              <span className="match-score">
+                Score: {(scholarship.overallScore * 100).toFixed(0)}%
+              </span>
+            )}
+          </div>
+        )}
+        
+        {/* Grant Status - Only show the calculated status */}
+        {scholarship.status && (
+          <div className="grant-status">
+            <span 
+              className="status-badge"
+              style={{ backgroundColor: getStatusColor(scholarship.status) }}
+            >
+              {scholarship.status}
+            </span>
+            {scholarship.daysUntilDeadline && (
+              <span className="days-until">
+                {scholarship.daysUntilDeadline} days left
+              </span>
+            )}
+          </div>
+        )}
+        
+        {/* Deadline Info - Only show if no calculated status */}
+        {!scholarship.status && scholarship.application && scholarship.application.deadline && (
+          <p className={`scholarship-deadline ${getDeadlineClass(scholarship.application.deadline)}`}>
+            {formatDeadline(scholarship.application.deadline)}
+          </p>
+        )}
       </div>
       
       <div className="scholarship-card-body">

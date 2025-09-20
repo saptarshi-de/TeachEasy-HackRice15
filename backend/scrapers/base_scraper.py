@@ -98,8 +98,92 @@ class BaseScraper:
         
         return None
     
-    def normalize_grade_levels(self, text: str) -> List[str]:
+    def calculate_next_cycle_deadline(self, original_deadline: datetime, is_recurring: bool = True) -> datetime:
+        """Calculate next cycle deadline for recurring grants"""
+        if not is_recurring:
+            return None
+        
+        # If deadline is in the past, calculate next year's deadline
+        if original_deadline < datetime.now():
+            try:
+                # Try to add one year
+                next_deadline = original_deadline.replace(year=original_deadline.year + 1)
+                return next_deadline
+            except ValueError:
+                # Handle leap year edge case (Feb 29)
+                next_deadline = original_deadline.replace(year=original_deadline.year + 1, day=28)
+                return next_deadline
+        else:
+            # If deadline is in the future, return as is
+            return original_deadline
+    
+    def determine_grant_status(self, deadline: datetime, is_recurring: bool = False) -> Dict:
+        """Determine grant status and next available deadline"""
+        now = datetime.now()
+        
+        if deadline is None:
+            return {
+                "status": "Unknown",
+                "isActive": False,
+                "nextDeadline": None,
+                "daysUntilDeadline": None
+            }
+        
+        if deadline < now:
+            # Grant is expired
+            if is_recurring:
+                next_deadline = self.calculate_next_cycle_deadline(deadline, True)
+                if next_deadline:
+                    days_until = (next_deadline - now).days
+                    return {
+                        "status": "Expired - Next Cycle Available",
+                        "isActive": True,
+                        "nextDeadline": next_deadline,
+                        "daysUntilDeadline": days_until,
+                        "originalDeadline": deadline
+                    }
+                else:
+                    return {
+                        "status": "Expired - No Next Cycle",
+                        "isActive": False,
+                        "nextDeadline": None,
+                        "daysUntilDeadline": None,
+                        "originalDeadline": deadline
+                    }
+            else:
+                return {
+                    "status": "Expired - Not Recurring",
+                    "isActive": False,
+                    "nextDeadline": None,
+                    "daysUntilDeadline": None,
+                    "originalDeadline": deadline
+                }
+        else:
+            # Grant is still active
+            days_until = (deadline - now).days
+            if days_until <= 30:
+                status = "Deadline Approaching"
+            elif days_until <= 90:
+                status = "Open - Apply Soon"
+            else:
+                status = "Open"
+            
+            return {
+                "status": status,
+                "isActive": True,
+                "nextDeadline": deadline,
+                "daysUntilDeadline": days_until,
+                "originalDeadline": deadline
+            }
+    
+    def normalize_grade_levels(self, text) -> List[str]:
         """Normalize grade level text to our enum values"""
+        # Handle both strings and lists
+        if isinstance(text, list):
+            text = ', '.join(text)
+        elif not isinstance(text, str):
+            return ['Any']
+        
         text = text.lower()
         grade_mapping = {
             'pre-k': 'Pre-K', 'prek': 'Pre-K', 'pre-kindergarten': 'Pre-K',
@@ -128,8 +212,14 @@ class BaseScraper:
         
         return list(set(grades)) if grades else ['Any']
     
-    def normalize_subjects(self, text: str) -> List[str]:
+    def normalize_subjects(self, text) -> List[str]:
         """Normalize subject text to our enum values"""
+        # Handle both strings and lists
+        if isinstance(text, list):
+            text = ', '.join(text)
+        elif not isinstance(text, str):
+            return ['Any']
+        
         text = text.lower()
         subject_mapping = {
             'math': 'Mathematics', 'mathematics': 'Mathematics',
@@ -153,8 +243,14 @@ class BaseScraper:
         
         return list(set(subjects)) if subjects else ['Any']
     
-    def normalize_funding_types(self, text: str) -> List[str]:
+    def normalize_funding_types(self, text) -> List[str]:
         """Normalize funding type text to our enum values"""
+        # Handle both strings and lists
+        if isinstance(text, list):
+            text = ', '.join(text)
+        elif not isinstance(text, str):
+            return ['Classroom Supplies']
+        
         text = text.lower()
         funding_mapping = {
             'supplies': 'Classroom Supplies', 'classroom supplies': 'Classroom Supplies',
@@ -173,7 +269,7 @@ class BaseScraper:
             if key in text:
                 funding_types.append(value)
         
-        return list(set(funding_types)) if funding_types else ['General']
+        return list(set(funding_types)) if funding_types else ['Classroom Supplies']
     
     def clean_text(self, text: str) -> str:
         """Clean and normalize text"""
