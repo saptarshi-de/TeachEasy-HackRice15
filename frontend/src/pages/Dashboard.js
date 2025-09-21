@@ -1,27 +1,21 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import FilterSidebar from '../components/FilterSidebar';
 import ScholarshipCard from '../components/ScholarshipCard';
-import Loading from '../components/Loading';
+import FilterSidebar from '../components/FilterSidebar';
 
 const Dashboard = () => {
   const { user, isAuthenticated, getAccessTokenSilently } = useAuth0();
-  const navigate = useNavigate();
-  
   const [scholarships, setScholarships] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [sortBy, setSortBy] = useState('createdAt');
-  const [sortOrder, setSortOrder] = useState('desc');
+  const [error, setError] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [totalItems, setTotalItems] = useState(0);
+  const [sortBy, setSortBy] = useState('createdAt');
+  const [sortOrder, setSortOrder] = useState('desc');
+  const [searchTerm, setSearchTerm] = useState('');
   const [bookmarkedIds, setBookmarkedIds] = useState(new Set());
-  const [showSuccessMessage, setShowSuccessMessage] = useState('');
-  
   const [filters, setFilters] = useState({
     minAmount: '',
     maxAmount: '',
@@ -30,19 +24,12 @@ const Dashboard = () => {
     fundingTypes: []
   });
 
-  // Redirect if not authenticated
-  useEffect(() => {
-    if (!isAuthenticated) {
-      navigate('/');
-    }
-  }, [isAuthenticated, navigate]);
-
-  // Fetch scholarships
+  // Fetch scholarships with filtering and pagination
   const fetchScholarships = useCallback(async () => {
+    setLoading(true);
+    setError('');
+    
     try {
-      setLoading(true);
-      setError(null);
-
       const params = new URLSearchParams({
         page: currentPage,
         limit: 12,
@@ -56,13 +43,28 @@ const Dashboard = () => {
         ...(filters.fundingTypes.length > 0 && { fundingTypes: filters.fundingTypes.join(',') })
       });
 
+      console.log('Fetching scholarships with params:', params.toString());
       const response = await axios.get(`/api/scholarships?${params}`);
-      setScholarships(response.data.scholarships);
-      setTotalPages(response.data.pagination.totalPages);
-      setTotalItems(response.data.pagination.totalItems);
+      console.log('Scholarships API Response:', response.data);
+      
+      // Handle the response safely
+      if (response.data && response.data.scholarships) {
+        setScholarships(response.data.scholarships);
+        setTotalPages(response.data.pagination?.totalPages || 1);
+        setTotalItems(response.data.pagination?.totalItems || 0);
+      } else {
+        console.error('Unexpected API response format:', response.data);
+        setScholarships([]);
+        setTotalPages(1);
+        setTotalItems(0);
+      }
     } catch (err) {
       setError('Failed to fetch scholarships. Please try again.');
       console.error('Error fetching scholarships:', err);
+      console.error('Error response:', err.response?.data);
+      setScholarships([]);
+      setTotalPages(1);
+      setTotalItems(0);
     } finally {
       setLoading(false);
     }
@@ -78,219 +80,191 @@ const Dashboard = () => {
         headers: { Authorization: `Bearer ${token}` }
       });
       
-      const bookmarkIds = new Set(response.data.map(scholarship => scholarship._id));
-      setBookmarkedIds(bookmarkIds);
+      console.log('Bookmarks API Response:', response.data);
+      
+      // Handle the response safely
+      if (Array.isArray(response.data)) {
+        const bookmarkIds = new Set(response.data.map(scholarship => scholarship._id));
+        setBookmarkedIds(bookmarkIds);
+      } else {
+        console.error('Unexpected bookmarks response format:', response.data);
+        setBookmarkedIds(new Set());
+      }
     } catch (err) {
       console.error('Error fetching bookmarks:', err);
+      console.error('Error response:', err.response?.data);
+      setBookmarkedIds(new Set());
     }
   }, [isAuthenticated, getAccessTokenSilently, user?.sub]);
 
   // Handle bookmark toggle
   const handleBookmark = async (scholarshipId) => {
     if (!isAuthenticated) return;
-
+    
     try {
       const token = await getAccessTokenSilently();
       const isBookmarked = bookmarkedIds.has(scholarshipId);
       
       if (isBookmarked) {
-        await axios.delete(`/api/scholarships/${scholarshipId}/bookmark`, {
-          headers: { Authorization: `Bearer ${token}` },
-          data: { auth0Id: user.sub }
-        });
-        setBookmarkedIds(prev => {
-          const newSet = new Set(prev);
-          newSet.delete(scholarshipId);
-          return newSet;
+        await axios.delete(`/api/users/${user.sub}/bookmarks/${scholarshipId}`, {
+          headers: { Authorization: `Bearer ${token}` }
         });
       } else {
-        await axios.post(`/api/scholarships/${scholarshipId}/bookmark`, 
-          { auth0Id: user.sub },
-          { headers: { Authorization: `Bearer ${token}` } }
-        );
-        setBookmarkedIds(prev => new Set([...prev, scholarshipId]));
+        await axios.post(`/api/users/${user.sub}/bookmarks/${scholarshipId}`, {}, {
+          headers: { Authorization: `Bearer ${token}` }
+        });
       }
+      
+      // Update local state
+      const newBookmarkedIds = new Set(bookmarkedIds);
+      if (isBookmarked) {
+        newBookmarkedIds.delete(scholarshipId);
+      } else {
+        newBookmarkedIds.add(scholarshipId);
+      }
+      setBookmarkedIds(newBookmarkedIds);
     } catch (err) {
       console.error('Error toggling bookmark:', err);
     }
   };
 
-  const handleApplicationSubmitted = (application) => {
-    setShowSuccessMessage(`Application submitted for "${application.scholarshipTitle}"!`);
-    setTimeout(() => setShowSuccessMessage(''), 5000);
-  };
-
   // Handle filter changes
-  const handleFilterChange = (filterType, value) => {
-    setFilters(prev => ({
-      ...prev,
-      [filterType]: value
-    }));
+  const handleFilterChange = (newFilters) => {
+    setFilters(newFilters);
     setCurrentPage(1); // Reset to first page when filters change
   };
 
-  // Clear all filters
-  const handleClearFilters = () => {
-    setFilters({
-      minAmount: '',
-      maxAmount: '',
-      gradeLevels: [],
-      subjects: [],
-      fundingTypes: []
-    });
-    setSearchTerm('');
-    setCurrentPage(1);
-  };
-
   // Handle search
-  const handleSearch = (e) => {
-    setSearchTerm(e.target.value);
-    setCurrentPage(1);
+  const handleSearch = (term) => {
+    setSearchTerm(term);
+    setCurrentPage(1); // Reset to first page when search changes
   };
 
-  // Handle sort change
-  const handleSortChange = (e) => {
-    const [field, order] = e.target.value.split('-');
+  // Handle sort
+  const handleSort = (field, order) => {
     setSortBy(field);
     setSortOrder(order);
-    setCurrentPage(1);
+    setCurrentPage(1); // Reset to first page when sort changes
+  };
+
+  // Handle page change
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   // Load data on component mount and when dependencies change
   useEffect(() => {
-    if (isAuthenticated) {
-      fetchScholarships();
-      fetchBookmarks();
-    }
-  }, [isAuthenticated, currentPage, sortBy, sortOrder, filters, searchTerm, fetchScholarships, fetchBookmarks]);
+    fetchScholarships();
+    fetchBookmarks();
+  }, [fetchScholarships, fetchBookmarks]);
 
-  if (!isAuthenticated) {
-    return <Loading />;
+  // Show loading state
+  if (loading && scholarships.length === 0) {
+    return (
+      <div className="dashboard-container">
+        <div className="loading-container">
+          <div className="loading-spinner"></div>
+          <p>Loading scholarships...</p>
+        </div>
+      </div>
+    );
   }
 
   return (
-    <div className="p-6">
-      <div className="container">
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold mb-2">Find Your Next Opportunity</h1>
-          <p className="text-gray-600">
-            Discover scholarships and grants tailored to your teaching needs.
-          </p>
-        </div>
+    <div className="dashboard-container">
+      <div className="dashboard-header">
+        <h1>🎓 Scholarship Dashboard</h1>
+        <p>Discover and apply for educational opportunities</p>
+      </div>
 
-        <div className="dashboard-layout">
-          {/* Filter Sidebar */}
-          <FilterSidebar
-            filters={filters}
-            onFilterChange={handleFilterChange}
-            onClearFilters={handleClearFilters}
-          />
+      <div className="dashboard-content">
+        <FilterSidebar
+          filters={filters}
+          onFilterChange={handleFilterChange}
+          onSearch={handleSearch}
+          onSort={handleSort}
+          sortBy={sortBy}
+          sortOrder={sortOrder}
+        />
 
-          {/* Main Content */}
-          <div>
-            {/* Search and Sort */}
-            <div className="mb-6">
-              <div className="search-container">
-                <input
-                  type="text"
-                  placeholder="Search scholarships, organizations, or keywords..."
-                  value={searchTerm}
-                  onChange={handleSearch}
-                  className="search-input"
-                />
-                <svg className="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
-              </div>
-              
-              <div className="results-header">
-                <div className="results-count">
-                  {loading ? 'Loading...' : `${totalItems} opportunities found`}
-                </div>
-                <select
-                  value={`${sortBy}-${sortOrder}`}
-                  onChange={handleSortChange}
-                  className="sort-select"
-                >
-                  <option value="createdAt-desc">Newest First</option>
-                  <option value="deadline-asc">Deadline: Earliest First</option>
-                  <option value="deadline-desc">Deadline: Latest First</option>
-                  <option value="amount-desc">Amount: Highest First</option>
-                  <option value="amount-asc">Amount: Lowest First</option>
-                  <option value="popularity-desc">Most Popular</option>
-                </select>
-              </div>
+        <div className="scholarships-section">
+          {error && (
+            <div className="error-message">
+              <p>{error}</p>
+              <button onClick={fetchScholarships} className="retry-btn">
+                Try Again
+              </button>
             </div>
+          )}
 
-            {/* Success Message */}
-            {showSuccessMessage && (
-              <div className="success-message">
-                <span>{showSuccessMessage}</span>
-                <button onClick={() => setShowSuccessMessage('')}>×</button>
-              </div>
-            )}
-
-            {/* Results */}
-            {loading ? (
-              <Loading />
-            ) : error ? (
-              <div className="empty-container">
-                <h3>Error Loading Opportunities</h3>
-                <p>{error}</p>
-                <button onClick={fetchScholarships} className="btn btn-primary">
-                  Try Again
-                </button>
-              </div>
-            ) : scholarships.length === 0 ? (
-              <div className="empty-container">
-                <h3>No Opportunities Found</h3>
-                <p>Try adjusting your filters or search terms to find more opportunities.</p>
-                <button onClick={handleClearFilters} className="btn btn-primary">
-                  Clear Filters
-                </button>
-              </div>
-            ) : (
-              <>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {scholarships.map(scholarship => (
-                    <ScholarshipCard
-                      key={scholarship._id}
-                      scholarship={scholarship}
-                      onBookmark={handleBookmark}
-                      isBookmarked={bookmarkedIds.has(scholarship._id)}
-                      onApplicationSubmitted={handleApplicationSubmitted}
-                      userId={user?.sub || user?.email || 'anonymous'}
-                    />
-                  ))}
-                </div>
-
-                {/* Pagination */}
-                {totalPages > 1 && (
-                  <div className="flex justify-center items-center gap-2 mt-8">
-                    <button
-                      onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
-                      disabled={currentPage === 1}
-                      className="btn btn-outline btn-sm"
-                    >
-                      Previous
-                    </button>
-                    
-                    <span className="text-sm text-gray-600">
-                      Page {currentPage} of {totalPages}
-                    </span>
-                    
-                    <button
-                      onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
-                      disabled={currentPage === totalPages}
-                      className="btn btn-outline btn-sm"
-                    >
-                      Next
-                    </button>
-                  </div>
-                )}
-              </>
+          <div className="results-header">
+            <h2>
+              {totalItems > 0 ? `${totalItems} scholarships found` : 'No scholarships found'}
+            </h2>
+            {searchTerm && (
+              <p className="search-term">Search results for: "{searchTerm}"</p>
             )}
           </div>
+
+          {scholarships.length > 0 ? (
+            <>
+              <div className="scholarships-grid">
+                {scholarships.map((scholarship) => (
+                  <ScholarshipCard
+                    key={scholarship._id}
+                    scholarship={scholarship}
+                    isBookmarked={bookmarkedIds.has(scholarship._id)}
+                    onBookmark={handleBookmark}
+                  />
+                ))}
+              </div>
+
+              {totalPages > 1 && (
+                <div className="pagination">
+                  <button
+                    onClick={() => handlePageChange(currentPage - 1)}
+                    disabled={currentPage === 1}
+                    className="pagination-btn"
+                  >
+                    Previous
+                  </button>
+                  
+                  <div className="pagination-info">
+                    Page {currentPage} of {totalPages}
+                  </div>
+                  
+                  <button
+                    onClick={() => handlePageChange(currentPage + 1)}
+                    disabled={currentPage === totalPages}
+                    className="pagination-btn"
+                  >
+                    Next
+                  </button>
+                </div>
+              )}
+            </>
+          ) : (
+            !loading && (
+              <div className="no-results">
+                <h3>No scholarships found</h3>
+                <p>Try adjusting your search criteria or filters</p>
+                <button onClick={() => {
+                  setSearchTerm('');
+                  setFilters({
+                    minAmount: '',
+                    maxAmount: '',
+                    gradeLevels: [],
+                    subjects: [],
+                    fundingTypes: []
+                  });
+                  setCurrentPage(1);
+                }} className="clear-filters-btn">
+                  Clear All Filters
+                </button>
+              </div>
+            )
+          )}
         </div>
       </div>
     </div>
