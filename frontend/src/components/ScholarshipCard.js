@@ -40,15 +40,7 @@ const ScholarshipCard = ({ scholarship, onBookmark, isBookmarked }) => {
     return 'text-gray-600';
   };
 
-  const getMatchLevelColor = (level) => {
-    switch (level) {
-      case 'High': return '#4CAF50';
-      case 'Medium': return '#FF9800';
-      case 'Low': return '#FFC107';
-      case 'Very Low': return '#9E9E9E';
-      default: return '#9E9E9E';
-    }
-  };
+  // Note: AI matching removed for project reorganization
 
   const getStatusColor = (status) => {
     if (status.includes('Expired')) return '#F44336';
@@ -69,25 +61,10 @@ const ScholarshipCard = ({ scholarship, onBookmark, isBookmarked }) => {
           )}
         </p>
         <div className="scholarship-amount">
-          {formatAmount(scholarship.amount.min, scholarship.amount.max)}
+          {scholarship.amount.display || formatAmount(scholarship.amount.min, scholarship.amount.max)}
         </div>
         
-        {/* AI Match Level */}
-        {scholarship.matchLevel && (
-          <div className="match-level">
-            <span 
-              className="match-badge"
-              style={{ backgroundColor: getMatchLevelColor(scholarship.matchLevel) }}
-            >
-              {scholarship.matchLevel} Match
-            </span>
-            {scholarship.overallScore && (
-              <span className="match-score">
-                Score: {(scholarship.overallScore * 100).toFixed(0)}%
-              </span>
-            )}
-          </div>
-        )}
+        {/* Note: AI matching removed for project reorganization */}
         
         {/* Grant Status - Only show the calculated status */}
         {scholarship.status && (
@@ -129,19 +106,32 @@ const ScholarshipCard = ({ scholarship, onBookmark, isBookmarked }) => {
       </div>
       
       <div className="scholarship-card-footer">
-        <Link 
-          to={`/scholarship/${scholarship._id}`}
-          className="btn btn-primary btn-sm"
-        >
-          View Details
-        </Link>
+        <div className="scholarship-actions">
+          <Link 
+            to={`/scholarship/${scholarship._id}`}
+            className="btn btn-outline-primary btn-sm"
+          >
+            View Details
+          </Link>
+          
+          {scholarship.application && scholarship.application.applicationUrl && (
+            <a
+              href={scholarship.application.applicationUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-primary btn-sm apply-btn"
+            >
+              Apply Now
+            </a>
+          )}
+        </div>
         
         <button
           onClick={() => onBookmark(scholarship._id)}
           className={`bookmark-btn ${isBookmarked ? 'bookmarked' : ''}`}
+          title={isBookmarked ? 'Remove bookmark' : 'Add bookmark'}
         >
           <span>{isBookmarked ? '★' : '☆'}</span>
-          {isBookmarked ? 'Bookmarked' : 'Bookmark'}
         </button>
       </div>
     </div>

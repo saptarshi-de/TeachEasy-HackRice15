@@ -67,7 +67,7 @@ npm start
 
 The application will be available at:
 - Frontend: http://localhost:3000
-- Backend API: http://localhost:5000
+- Backend API: http://localhost:5001
 
 ## 📁 Project Structure
 
@@ -98,7 +98,7 @@ Create `backend/.env` with:
 
 ```env
 MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/teacheasy
-PORT=5000
+PORT=5001
 NODE_ENV=development
 ```
 

@@ -231,7 +231,7 @@ const ScholarshipDetail = () => {
                   </div>
                   <div className="text-right">
                     <div className="text-2xl font-bold text-green-600 mb-1">
-                      {formatAmount(scholarship.amount.min, scholarship.amount.max)}
+                      {scholarship.amount.display || formatAmount(scholarship.amount.min, scholarship.amount.max)}
                     </div>
                     <div className="flex flex-col items-end gap-1">
                       <span 
@@ -358,12 +358,12 @@ const ScholarshipDetail = () => {
                     {isBookmarked ? 'Bookmarked' : 'Bookmark'}
                   </button>
 
-                  {scholarship.application.applicationUrl && (
+                  {scholarship.application && scholarship.application.applicationUrl && (
                     <a
                       href={scholarship.application.applicationUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="btn btn-primary"
+                      className="btn btn-primary btn-lg apply-now-btn"
                     >
                       Apply Now
                     </a>

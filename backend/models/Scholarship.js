@@ -40,6 +40,10 @@ const scholarshipSchema = new mongoose.Schema({
       type: String,
       default: 'USD',
       enum: ['USD', 'CAD', 'EUR', 'GBP']
+    },
+    display: {
+      type: String,
+      required: false
     }
   },
   
@@ -47,7 +51,12 @@ const scholarshipSchema = new mongoose.Schema({
   eligibility: {
     gradeLevels: [{
       type: String,
-      enum: ['Pre-K', 'K', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', 'College', 'Adult Education']
+      enum: [
+        'Pre-K', 'Kindergarten', '1st Grade', '2nd Grade', '3rd Grade', '4th Grade', '5th Grade',
+        '6th Grade', '7th Grade', '8th Grade', '9th Grade', '10th Grade', '11th Grade', '12th Grade',
+        'K', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12',
+        'College', 'Adult Education', 'Elementary', 'Middle School', 'High School', 'Early Childhood'
+      ]
     }],
     
     subjects: [{
@@ -55,7 +64,9 @@ const scholarshipSchema = new mongoose.Schema({
       enum: [
         'Mathematics', 'Science', 'English/Language Arts', 'Social Studies', 'History',
         'Art', 'Music', 'Physical Education', 'Foreign Language', 'Computer Science',
-        'Special Education', 'ESL/ELL', 'Reading', 'Writing', 'Any', 'Other'
+        'Special Education', 'ESL/ELL', 'Reading', 'Writing', 'Any', 'Other',
+        'General Education', 'Classroom Supplies', 'Technology', 'Engineering', 'Arts',
+        'Visual Arts', 'English Language Arts', 'Geography', 'Civics'
       ]
     }],
     
@@ -82,7 +93,7 @@ const scholarshipSchema = new mongoose.Schema({
         'Amarillo ISD', 'Laredo ISD', 'Brownsville ISD', 'McAllen ISD', 'Waco ISD',
         'Killeen ISD', 'Tyler ISD', 'Beaumont ISD', 'Bryan ISD', 'College Station ISD',
         // Statewide/National
-        'Statewide', 'National', 'International', 'Rural Districts', 'High-Need Districts', 'Local Districts', 'Texas Districts', 'California Districts', 'New York Districts'
+        'Statewide', 'National', 'International', 'Rural Districts', 'High-Need Districts', 'Local Districts', 'Texas Districts', 'California Districts', 'New York Districts', 'All Districts'
       ]
     }],
     
@@ -130,7 +141,7 @@ const scholarshipSchema = new mongoose.Schema({
         'STEM Project Proposal', 'Diversity Statement', 'Community Impact Plan', 'Local Support Letters',
         'Digital Divide Assessment', 'Technology Plan', 'Professional Development Plan', 'Principal Recommendation',
         'STEM Curriculum Plan', 'Innovation Proposal', 'Arts Integration Plan', 'Student Work Samples',
-        'STEM Program Plan', 'Student Outcomes', 'Student Impact Plan'
+        'STEM Program Plan', 'Student Outcomes', 'Student Impact Plan', 'Application Form', 'Project Description'
       ]
     }],
     
@@ -217,31 +228,7 @@ const scholarshipSchema = new mongoose.Schema({
     default: 'Unknown'
   },
   
-  matchLevel: {
-    type: String,
-    enum: ['High', 'Medium', 'Low', 'Very Low'],
-    default: 'Medium'
-  },
-  
-  matchScore: {
-    type: Number,
-    default: 0.5
-  },
-  
-  overallScore: {
-    type: Number,
-    default: 0.5
-  },
-  
-  semanticScore: {
-    type: Number,
-    default: 0.5
-  },
-  
-  successPrediction: {
-    type: Number,
-    default: 0.5
-  },
+  // Note: AI matching fields removed for project reorganization
   
   daysUntilDeadline: {
     type: Number,

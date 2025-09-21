@@ -1,0 +1,870 @@
+[
+  {
+    "title": "DonorsChoose(\"https://www.donorschoose.org/\")",
+    "organization": "DonorsChoose",
+    "website": "\"https://www.donorschoose.org/\"",
+    "description": "Create a fundraiser that allows others to donate toward goals like new school resources or classroom projects. Get crayons, books, cleaning supplies, technology, and more to help students get back to learning.",
+    "amount": "Varies",
+    "deadline": "Ongoing",
+    "eligibility": "For teachers or full-time educators who work directly with students.",
+    "tags": [
+      "Classroom Supplies",
+      "Technology",
+      "Literacy",
+      "STEAM"
+    ]
+  },
+  {
+    "title": "Voya Unsung Heroes(\"https://www.scholarsapply.org/unsungheroes/\")",
+    "organization": "Voya Unsung Heroes",
+    "website": "\"https://www.scholarsapply.org/unsungheroes/\"",
+    "description": "Recognizes innovative and progressive thinking in education by providing grants for educators to fund classroom projects.",
+    "amount": "$25,000 (first place), $10,000 (second place), and $5,000 (third place). Each of the 50 finalists will receive an award of $2,000.",
+    "deadline": "April 18, 2025",
+    "eligibility": "Full-time educators, teachers, principals, paraprofessionals, or classified staff with effective and innovative projects that improve student learning. Must be employed by an accredited K-12 public or private school located in the United States.",
+    "tags": [
+      "Professional Development",
+      "Classroom Supplies"
+    ]
+  },
+  {
+    "title": "Mitsubishi Electric America Foundation(\"https://us.mitsubishielectric.com/en/about/local/csr/meaf/index.html\")",
+    "organization": "Mitsubishi Electric America Foundation",
+    "website": "\"https://us.mitsubishielectric.com/en/about/local/csr/meaf/index.html\"",
+    "description": "Dedicated to helping young Americans with disabilities maximize their potential and fully participate in society. A major program emphasis is inclusion: enabling young people with disabilities to have full access to educational, vocational, and recreational opportunities, and to participate alongside their non-disabled peers.",
+    "amount": "$10K to $100K/year, for one to two years",
+    "deadline": "MEAF accepts online proposals from July 15 to November 1 to be considered for the following year’s funding.",
+    "eligibility": "MEAF defines youth from birth through college age (about 26).",
+    "tags": [
+      "Special Education",
+      "Foundation"
+    ]
+  },
+  {
+    "title": "ConocoPhillips(\"http://www.conocophillips.com/sustainability/creating-shared-value/global-giving/grant-requests/\")",
+    "organization": "ConocoPhillips",
+    "website": "\"http://www.conocophillips.com/sustainability/creating-shared-value/global-giving/grant-requests/\"",
+    "description": "ConocoPhillips offers Charitable Investment Grants in the areas of education, the arts, health and safety, natural resources, civic and social services, and disaster relief.",
+    "amount": "Varies",
+    "deadline": "July 31",
+    "eligibility": "To qualify for a ConocoPhillips charitable contribution in the United States, organizations must be either IRS-recognized 501(c)(3) public charities, government subdivisions, or accredited schools/systems.",
+    "tags": [
+      "Arts Education",
+      "STEAM"
+    ]
+  },
+  {
+    "title": "Ezra Jack Keats Foundation(\"https://www.ezra-jack-keats.org/how-to-apply-for-a-mini-grant/\")",
+    "organization": "Ezra Jack Keats Foundation",
+    "website": "\"https://www.ezra-jack-keats.org/how-to-apply-for-a-mini-grant/\"",
+    "description": "Mini-Grant programs give teachers and librarians a unified, flexible way to meet Common Core goals, and offer students a fun experience, a sense of achievement, and a source of pride.",
+    "amount": "Varies",
+    "deadline": "September 30",
+    "eligibility": "Public schools, public libraries, preschools, Head Start programs located in the United States and U.S. commonwealths and territories, including Puerto Rico and Guam. Only one application per library or school may apply.",
+    "tags": [
+      "Early Childhood",
+      "Mini Grant",
+      "Foundation"
+    ]
+  },
+  {
+    "title": "Association of American Educators Grant Program(\"https://www.aaeteachers.org/awards\")",
+    "organization": "Association of American Educators Grant Program",
+    "website": "\"https://www.aaeteachers.org/awards\"",
+    "description": "Classroom grants can be used for a variety of projects and materials, including but not limited to books, software, calculators, math manipulatives, art supplies, audiovisual equipment, and lab materials.",
+    "amount": "Up to $500",
+    "deadline": "October 1, March 1",
+    "eligibility": "For full-time educators who have not received a grant or scholarship from AAE in the past two years. AAE members receive additional weight in the scoring rubric.",
+    "tags": [
+      "Classroom Grant",
+      "Classroom Supplies",
+      "Literacy",
+      "STEAM"
+    ]
+  },
+  {
+    "title": "Casey’s Cash for Classrooms Grant Program(\"https://www.caseys.com/community/cash-for-classrooms-grants\")",
+    "organization": "Casey’s Cash for Classrooms Grant Program",
+    "website": "\"https://www.caseys.com/community/cash-for-classrooms-grants\"",
+    "description": "In 2021, Casey’s awarded $1 million to benefit K-12 public and nonprofit private schools through 99 grants. Categories include physical improvements, material needs, teacher support, and community engagement. (Note: Open to K-12 public and private schools within Casey’s 16-state footprint: IA, IL, IN, AR, NE, MO, KS, KY, MI, MN, ND, OH, OK, SD, TN, WI.)",
+    "amount": "$3,000 to $50,000",
+    "deadline": "November 30",
+    "eligibility": "An organization may only submit one application during the current cycle. A K-12 public or nonprofit private school in Casey’s 16-state footprint can receive more than one donation if submitted by different organizations. These organizations must have tax-exempt status under Section 501(c)(3) of the Internal Revenue Code, listed on the IRS Master File, and conduct activities within the United States.",
+    "tags": [
+      "Classroom Supplies",
+      "Special Education"
+    ]
+  },
+  {
+    "title": "Walmart(\"https://walmart.org/how-we-give/local-community-grants\")",
+    "organization": "Walmart",
+    "website": "\"https://walmart.org/how-we-give/local-community-grants\"",
+    "description": "Provides after-school enrichment, tutoring, or vocational training for low-income individuals and families in the United States.",
+    "amount": "$250 to $5,000",
+    "deadline": "Quarterly—April 15, July 15, October 15, and December 31",
+    "eligibility": "",
+    "tags": [
+      "Professional Development"
+    ]
+  },
+  {
+    "title": "Application Requirements: Organizations must have a Spark Good account and be verified by Deed, Walmart’s third-party verification service provider. All grants are disbursed through electronic payment, so organizations must provide electronic payment information to complete the approval process. They must also meet specific tax criteria outlined on the program’s website(\"https://walmart.org/how-we-give/program-guidelines/spark-good-local-grants-guidelines\").",
+    "organization": "Application Requirements: Organizations must have a Spark Good account and be verified by Deed, Walmart’s third-party verification service provider. All grants are disbursed through electronic payment, so organizations must provide electronic payment information to complete the approval process. They must also meet specific tax criteria outlined on the program’s website",
+    "website": "\"https://walmart.org/how-we-give/program-guidelines/spark-good-local-grants-guidelines\"",
+    "description": "",
+    "amount": "",
+    "deadline": "",
+    "eligibility": "",
+    "tags": []
+  },
+  {
+    "title": "Computers for Learning Program(\"https://www.dla.mil/Disposition-Services/Offers/CFL/\")",
+    "organization": "Computers for Learning Program",
+    "website": "\"https://www.dla.mil/Disposition-Services/Offers/CFL/\"",
+    "description": "K-12 educators can apply for this computer grant, which aims to provide students in disadvantaged communities with equipment for their schools.",
+    "amount": "Varies",
+    "deadline": "Rolling",
+    "eligibility": "Must be a school or educational nonprofit organization with a National Center for Education Statistics (NCES) number, serve some portion of pre-K through 12, and be located in the United States (including U.S. Virgin Islands, American Samoa, Guam, Commonwealth of Puerto Rico, Commonwealth of Northern Mariana Islands).",
+    "tags": [
+      "Early Childhood",
+      "Classroom Supplies",
+      "Technology"
+    ]
+  },
+  {
+    "title": "Pets in the Classroom Grants(\"https://www.petsintheclassroom.org/\")",
+    "organization": "Pets in the Classroom Grants",
+    "website": "\"https://www.petsintheclassroom.org/\"",
+    "description": "This small grant provides financial support toward the purchase of a classroom pet.",
+    "amount": "",
+    "deadline": "",
+    "eligibility": "",
+    "tags": [
+      "Classroom Grant",
+      "Classroom Supplies",
+      "Mini Grant"
+    ]
+  },
+  {
+    "title": "Award: Varies depending on the pet store(\"https://petsintheclassroom.org/about-our-grants/\") you choose.",
+    "organization": "Award: Varies depending on the pet store",
+    "website": "\"https://petsintheclassroom.org/about-our-grants/\"",
+    "description": "",
+    "amount": "",
+    "deadline": "Applications open for each school year in August.",
+    "eligibility": "Teachers in public or private schools from pre-K through 9th grade qualify. School librarians are also eligible to apply. High school grades 10 through 12, homeschools, home daycare centers, and home-based preschools do not qualify.",
+    "tags": [
+      "High School",
+      "Early Childhood",
+      "Classroom Supplies"
+    ]
+  },
+  {
+    "title": "Jordan Fundamentals Grant(\"https://we.riseup.net/giip+grants/jordan-fundamentals\")",
+    "organization": "Jordan Fundamentals Grant",
+    "website": "\"https://we.riseup.net/giip+grants/jordan-fundamentals\"",
+    "description": "This education grant provides funding for schools with the goal of improving academic outcomes, school communities, teacher-student relations, and teacher development.",
+    "amount": "The average award is $10,000 but can vary.",
+    "deadline": "April 15",
+    "eligibility": "For public school teachers or paraprofessionals working with students in grades 1 through 12 in the United States (all 50 states and the District of Columbia). At least 50% of the school’s student population must be eligible for the free or reduced school lunch program at the time of application.",
+    "tags": [
+      "Professional Development",
+      "Foundation"
+    ]
+  },
+  {
+    "title": "The Kinder Morgan Foundation Education Grants(\"https://www.kindermorgan.com/About-Us/Kinder-Morgan-Foundation\")",
+    "organization": "The Kinder Morgan Foundation Education Grants",
+    "website": "\"https://www.kindermorgan.com/About-Us/Kinder-Morgan-Foundation\"",
+    "description": "Kinder Morgan provides grants for K-12 programs in academic and arts education, with a focus on STEM and literacy for underserved youth.",
+    "amount": "Varies",
+    "deadline": "2025 date TBA",
+    "eligibility": "Eligible applicants include K-12 public and nonprofit private schools, as well as libraries and nonprofits with an educational focus. Applications should align with one of Kinder Morgan’s focus areas.",
+    "tags": [
+      "Foundation",
+      "Arts Education",
+      "Literacy",
+      "STEAM"
+    ]
+  },
+  {
+    "title": "Jimmie Johnson Foundation Champions Grant Program(\"https://jimmiejohnsonfoundation.org/uncategorized/champions-grant-eligibility-and-application-details/\")",
+    "organization": "Jimmie Johnson Foundation Champions Grant Program",
+    "website": "\"https://jimmiejohnsonfoundation.org/uncategorized/champions-grant-eligibility-and-application-details/\"",
+    "description": "Provides funding for K-12 public schools and charter schools in Charlotte, North Carolina, to support impactful projects in Science & Technology, Language & Literacy, Health & Wellness (in partnership with Chopt Creative Salad Co.), and the Arts. Professional Development Grants for Teachers",
+    "amount": "$15,000 to $35,000",
+    "deadline": "2025 date TBA",
+    "eligibility": "Eligible applicants are K-12 public schools and charter schools in Charlotte, North Carolina, that have been fully operational for at least three years. Applications must be submitted by school staff, not PTOs, through the Jimmie Johnson Foundation’s online grants management system. Schools are encouraged to participate in an informational call and must provide a detailed budget and vendor quotes.",
+    "tags": [
+      "Arts Education",
+      "Literacy",
+      "Foundation",
+      "Professional Development",
+      "Technology",
+      "STEAM"
+    ]
+  },
+  {
+    "title": "Albert Einstein Distinguished Educator Fellowship Program(\"https://science.osti.gov/wdts/einstein\")",
+    "organization": "Albert Einstein Distinguished Educator Fellowship Program",
+    "website": "\"https://science.osti.gov/wdts/einstein\"",
+    "description": "This grant offers a unique professional development opportunity for K-12 teachers who have taught STEM subjects for at least five years. These educators participate in 10- or 11-month positions in federal agencies or U.S. congressional offices across the country before returning to the classroom.",
+    "amount": "$6,000 monthly stipend, $1,000 monthly living expenses",
+    "deadline": "",
+    "eligibility": "",
+    "tags": [
+      "Professional Development",
+      "Classroom Supplies",
+      "STEAM"
+    ]
+  },
+  {
+    "title": "Deadline: November 14, 2024. See website for other key dates(\"https://science.osti.gov/wdts/einstein/Key-Dates\").",
+    "organization": "Deadline: November 14, 2024. See website for other key dates",
+    "website": "\"https://science.osti.gov/wdts/einstein/Key-Dates\"",
+    "description": "",
+    "amount": "",
+    "deadline": "",
+    "eligibility": "Candidates must be U.S. citizens with at least five years of full-time teaching experience in a STEM field, excluding student teaching. Applicants should have taught full-time in a public or private K-12 school for five of the past seven years, with current employment in such settings or as a district official. A letter of recommendation from a school district official among three required letters and the ability to secure a leave of absence for an 11-month program participation are also necessary.",
+    "tags": [
+      "STEAM"
+    ]
+  },
+  {
+    "title": "Fund for Teachers(\"https://www.fundforteachers.org/blog/2024-fund-for-teachers/\")",
+    "organization": "Fund for Teachers",
+    "website": "\"https://www.fundforteachers.org/blog/2024-fund-for-teachers/\"",
+    "description": "These self-designed awards allow educators to create their own unique professional development grants for teachers based on what they know they need to grow.",
+    "amount": "$5,000 to $10,000",
+    "deadline": "2025 date TBA",
+    "eligibility": "For those who teach full-time in a public, private, charter, or religious school with at least 50% of instruction in a classroom or classroom-like setting (including a library, gym, or pull-out scenario), who will return to the classroom the following year, and have completed three years of teaching by the conclusion of the 2023-24 school year.",
+    "tags": [
+      "Professional Development",
+      "Classroom Supplies",
+      "Foundation"
+    ]
+  },
+  {
+    "title": "NEA Foundation Learning & Leadership Grants(\"https://www.neafoundation.org/educator-grants-and-fellowships/learning-leadership-grants/\")",
+    "organization": "NEA Foundation Learning & Leadership Grants",
+    "website": "\"https://www.neafoundation.org/educator-grants-and-fellowships/learning-leadership-grants/\"",
+    "description": "These grants are for teachers and school administrators who are current NEA members. They support educators from districts with limited budgets with the funding to access professional development opportunities. Deadlines: Current application period: December 2024 – February 2025",
+    "amount": "Between $1,500 and $5,000",
+    "deadline": "",
+    "eligibility": "For teachers, education support professionals, or specialized instructional support personnel who are current NEA members. Current NEA Foundation grantees are ineligible for this funding opportunity.",
+    "tags": [
+      "Professional Development",
+      "Special Education",
+      "Foundation"
+    ]
+  },
+  {
+    "title": "NEA Foundation Student Success Grants(\"https://www.neafoundation.org/educator-grants-and-fellowships/student-success-grants/\")",
+    "organization": "NEA Foundation Student Success Grants",
+    "website": "\"https://www.neafoundation.org/educator-grants-and-fellowships/student-success-grants/\"",
+    "description": "Designed to support public school educators who implement innovative, engaging learning experiences that foster students’ critical thinking, problem-solving, and real-world connection skills. These grants encourage project-based and personalized learning, helping students develop essential academic content mastery, cultural understanding, collaboration, and communication skills.",
+    "amount": "Up to $5,000, funding activities for 12 months from the award date.",
+    "deadline": "Applications are open from December 2024 to February 2025.",
+    "eligibility": "Eligible applicants include public school teachers, education support professionals (ESPs), and specialized instructional support personnel (SISP) who are members of the National Education Association (NEA). Current NEA Foundation grantees cannot apply for concurrent funding. Funds may be used to develop and implement projects that enhance student learning through critical thinking, experiential and personalized learning, and cultural awareness.",
+    "tags": [
+      "Professional Development",
+      "Special Education",
+      "Foundation"
+    ]
+  },
+  {
+    "title": "McCarthey Dressman Teacher Development Grants(\"https://mccartheydressman.org/teacher-development-grants/\")",
+    "organization": "McCarthey Dressman Teacher Development Grants",
+    "website": "\"https://mccartheydressman.org/teacher-development-grants/\"",
+    "description": "A grant that can provide individual or small teams of K-12 teachers the opportunity to engage in insightful professional growth and training to bring fresh and innovative teaching strategies and methods to the classroom.",
+    "amount": "Up to $10,000 per year for a maximum of $20,000 over two years.",
+    "deadline": "April 15",
+    "eligibility": "For licensed K-12 teachers employed in public or private schools who have the background and experience to complete the program successfully and are willing to work in collaboration with the foundation.",
+    "tags": [
+      "Professional Development",
+      "Classroom Supplies"
+    ]
+  },
+  {
+    "title": "Sol Hirsch Education Fund Grants(\"https://nwafoundation.org/scholarships-grants/sol-hirsch-education-fund-grants/\")",
+    "organization": "Sol Hirsch Education Fund Grants",
+    "website": "\"https://nwafoundation.org/scholarships-grants/sol-hirsch-education-fund-grants/\"",
+    "description": "This grant is awarded annually to K-12 educators to enhance meteorology education for their students, school, or community. Established in 1994 by former National Weather Association Executive Director Sol Hirsch, the grant supports purchasing science materials or equipment, initiating science outreach programs, enhancing existing programs, or attending meteorology-related workshops or conferences to improve teaching.",
+    "amount": "Up to $750",
+    "deadline": "Application opens each spring; deadlines vary annually.",
+    "eligibility": "Applicants must be U.S. citizens or permanent residents working in publicly recognized or accredited U.S. schools or educational organizations. Teachers, program directors, and school district supervisors are eligible. Applications are evaluated based on demonstrated need, potential impact, and a detailed spending plan.",
+    "tags": [
+      "Professional Development",
+      "Foundation",
+      "Classroom Supplies",
+      "STEAM"
+    ]
+  },
+  {
+    "title": "Maitland P. Simmons Memorial Award for New Teachers(\"https://www.nsta.org/sites/default/files/Maitland.pdf\")",
+    "organization": "Maitland P. Simmons Memorial Award for New Teachers",
+    "website": "\"https://www.nsta.org/sites/default/files/Maitland.pdf\"",
+    "description": "Provides funds for new K-12 teachers (within their first five years) to attend the National Conference on Science Education, supporting their professional growth and networking. Award recipients also receive mentoring, tracking, and continued engagement opportunities with the National Science Teaching Association (NSTA).",
+    "amount": "Up to $1,000 for conference attendance",
+    "deadline": "2025 date TBA",
+    "eligibility": "Eligible applicants must have fewer than five years of full-time teaching experience, be NSTA members, and ideally have been members as pre-service teachers. The application requires a 500- to 750-word narrative outlining conference plans, a resume, a transcript or teaching certificate, and a letter of support from a mentor or supervisor. Recipients must submit a summary of their experience after the conference.",
+    "tags": [
+      "Professional Development",
+      "STEAM"
+    ]
+  },
+  {
+    "title": "Shell Science Teaching Award(\"https://www.nsta.org/sites/default/files/Shell_Award.pdf\")",
+    "organization": "Shell Science Teaching Award",
+    "website": "\"https://www.nsta.org/sites/default/files/Shell_Award.pdf\"",
+    "description": "This award, in partnership with Shell USA and the National Science Teaching Association (NSTA), recognizes one exceptional K-12 science teacher who has positively impacted their students, school, and community through exemplary science teaching. While special projects may be noted, the application should primarily focus on overall teaching excellence.",
+    "amount": "$10,000 for the recipient; expense-paid trips to the NSTA National Conference for the recipient and two finalists. The top 10 semifinalists receive certificates of distinction.",
+    "deadline": "December 19, 2024",
+    "eligibility": "Nominees must have at least eight years of experience teaching science in U.S., U.S. territory, Department of Defense, or Canadian schools. Applications should align with National Science Education Standards and include a CV, one-week schedule, teaching philosophy, instructional method documentation, and three letters of support. Selected finalists must submit a live-action YouTube video showcasing their teaching approach, followed by a site visit for the top three finalists.",
+    "tags": [
+      "Special Education",
+      "STEAM"
+    ]
+  },
+  {
+    "title": "Sylvia Shugrue Award for Elementary School Teachers(\"https://www.nsta.org/sites/default/files/Shugrue.pdf\")",
+    "organization": "Sylvia Shugrue Award for Elementary School Teachers",
+    "website": "\"https://www.nsta.org/sites/default/files/Shugrue.pdf\"",
+    "description": "Recognizes an elementary school teacher who has developed an interdisciplinary, inquiry-based lesson plan aligned with National Science Education Standards or NGSS. The award emphasizes effective planning, motivation, and assessment practices in science education and encourages collaboration with NSTA and other educators.",
+    "amount": "$1,000 plus up to $500 for attendance at the NSTA National Conference; lesson plan featured on the NSTA website for use by other teachers.",
+    "deadline": "2025 date TBA",
+    "eligibility": "Open to full-time elementary teachers (grades K-6) with a minimum of five years of experience and NSTA membership. The application requires a 250-word narrative on teaching practices, a three-page lesson plan with student work samples, two letters of support, a CV (up to five pages), and optional photos.",
+    "tags": [
+      "Elementary",
+      "STEAM"
+    ]
+  },
+  {
+    "title": "James Madison Graduate Fellowship(\"https://apply.mykaleidoscope.com/scholarships/2025JamesMadisonGraduateFellowship\")",
+    "organization": "James Madison Graduate Fellowship",
+    "website": "\"https://apply.mykaleidoscope.com/scholarships/2025JamesMadisonGraduateFellowship\"",
+    "description": "This fellowship provides funding for aspiring and current teachers of American history, government, or civics at the secondary level (grades 7-12) to pursue graduate studies centered on the U.S. Constitution. Fellows attend the Summer Institute on the Constitution in Washington, D.C., which is an integral part of the program. STEAM Education Grants for Educators and Schools",
+    "amount": "Up to $24,000 for graduate studies; expenses covered for the Summer Institute.",
+    "deadline": "2025 date TBA",
+    "eligibility": "Open to U.S. citizens who plan to teach or currently teach American history, government, or civics in grades 7-12. Applicants must hold a bachelor’s degree by the fellowship start date. Fellowship recipients commit to teaching in their field of study for a specified period post-graduation. The application includes choosing a master’s program that focuses on American history, political science, or education, with significant constitutional coursework.",
+    "tags": [
+      "High School",
+      "STEAM"
+    ]
+  },
+  {
+    "title": "Dell Technologies(\"https://i.dell.com/sites/csdocuments/Learn_Docs/en/dell-technologies-k-12-higher-education-grants-support-program.pdf\")",
+    "organization": "Dell Technologies",
+    "website": "\"https://i.dell.com/sites/csdocuments/Learn_Docs/en/dell-technologies-k-12-higher-education-grants-support-program.pdf\"",
+    "description": "The Dell Technologies Grants Support Program helps get your technology projects funded. As a free service, the Grants Program provides customized reports and consultations regarding ongoing annual technology grants that align with your project.",
+    "amount": "Varies",
+    "deadline": "Ongoing",
+    "eligibility": "Grants are for public agencies.",
+    "tags": [
+      "Technology",
+      "STEAM"
+    ]
+  },
+  {
+    "title": "National Girls Collaborative Project(\"https://ngcproject.org/mini-grants\")",
+    "organization": "National Girls Collaborative Project",
+    "website": "\"https://ngcproject.org/mini-grants\"",
+    "description": "Mini-grants are awarded to girl-serving programs that focus on science, technology, engineering, and mathematics (STEM) to support collaboration, address gaps and overlaps in service, and share exemplary practices.",
+    "amount": "$1,000",
+    "deadline": "Ongoing",
+    "eligibility": "At least two programs from distinct organizations listed on the NGCP Program Map must collaborate, with one chosen as the lead, located in a state or region currently offering mini-grants. Preference is given to innovative projects involving first-time collaborations. Projects must extend beyond a single day unless they are part of a larger event.",
+    "tags": [
+      "Technology",
+      "Mini Grant",
+      "STEAM"
+    ]
+  },
+  {
+    "title": "Saxena Family Foundation(\"http://saxenafoundation.com/guidelines/\")",
+    "organization": "Saxena Family Foundation",
+    "website": "\"http://saxenafoundation.com/guidelines/\"",
+    "description": "The foundation awards grants and supports programs that have a particular focus on STEM education and around empowering women in the United States and India.",
+    "amount": "$5,000 to $50,000",
+    "deadline": "Ongoing",
+    "eligibility": "Organizations seeking funding must be tax-exempt under Section 501(c)(3) and classified as public charities under Section 509(a) of the Internal Revenue Code, excluding private foundations and for-profit entities. Churches and religious organizations can qualify for non-sectarian community-benefiting activities. Though some unrestricted funding is available, the foundation predominantly supports specific projects.",
+    "tags": [
+      "Foundation",
+      "STEAM"
+    ]
+  },
+  {
+    "title": "Verizon(\"https://www.verizon.com/about/responsibility/grant-requirements\")",
+    "organization": "Verizon",
+    "website": "\"https://www.verizon.com/about/responsibility/grant-requirements\"",
+    "description": "For education grants, Verizon Foundation funding is intended to support, among other things, projects that promote science, technology, engineering, and math (“STEM”), including, for example, summer or after-school programs, teacher training, and research on improving learning in STEM areas through use of technology. New applications are by invitation only.",
+    "amount": "Varies",
+    "deadline": "Ongoing",
+    "eligibility": "",
+    "tags": [
+      "Professional Development",
+      "Technology",
+      "STEAM"
+    ]
+  },
+  {
+    "title": "Application Requirements: Organizations must maintain auditable records, adhere to legal standards for registration and reporting, uphold high business ethics, and not replicate public agencies’ efforts. Additionally, organizations receiving mixed income and those operating in support of these entities are eligible, with specific conditions for K-12 schools, which must be not-for-profit and registered with the NCES. For more, read the full requirements(\"https://www.verizon.com/about/responsibility/grant-requirements\").",
+    "organization": "Application Requirements: Organizations must maintain auditable records, adhere to legal standards for registration and reporting, uphold high business ethics, and not replicate public agencies’ efforts. Additionally, organizations receiving mixed income and those operating in support of these entities are eligible, with specific conditions for K-12 schools, which must be not-for-profit and registered with the NCES. For more, read the full requirements",
+    "website": "\"https://www.verizon.com/about/responsibility/grant-requirements\"",
+    "description": "",
+    "amount": "",
+    "deadline": "",
+    "eligibility": "",
+    "tags": []
+  },
+  {
+    "title": "Toshiba America Foundation Grants(\"http://www.toshiba.com/taf/\")",
+    "organization": "Toshiba America Foundation Grants",
+    "website": "\"http://www.toshiba.com/taf/\"",
+    "description": "Supports inquiry-based projects designed by individual teachers and small teams of teachers for use in their own classrooms to improve teaching and learning in science and mathematics.",
+    "amount": "Up to $1,000 for K-5, up to $5,000 or over $5,000 for grades 6-12.",
+    "deadline": "October 1 for K-5. March 1, June 1, September 1, and December 1 for under $5k for grades 6-12. May 1 and November 1 for over $5k for grades 6-12.",
+    "eligibility": "For elementary, middle, or high school teachers with a creative proposal for enhancing STEM (science, technology, engineering, and math) education through project-based learning with quantifiable results, who consider identifying specific tools, resources, or technologies that could make learning math and science engaging and enjoyable for students.",
+    "tags": [
+      "High School",
+      "Classroom Supplies",
+      "Arts Education",
+      "Elementary",
+      "Foundation",
+      "Technology",
+      "STEAM"
+    ]
+  },
+  {
+    "title": "AEP(\"https://www.aep.com/community/education/grants\")",
+    "organization": "AEP",
+    "website": "\"https://www.aep.com/community/education/grants\"",
+    "description": "AEP has a special interest in science, mathematics, technology, the study of energy and a sustainable environment, and energy efficiency.",
+    "amount": "$100 to $500",
+    "deadline": "Midnight on the third Friday in December",
+    "eligibility": "For pre-K to grade 12 teachers who live or teach in the AEP service area, or communities with major AEP facilities.",
+    "tags": [
+      "Early Childhood",
+      "Special Education",
+      "Technology",
+      "STEAM"
+    ]
+  },
+  {
+    "title": "American Chemical Society(\"https://www.acs.org/funding/grants/acs-hach-high-school-chemistry-classroom-grant.html\")",
+    "organization": "American Chemical Society",
+    "website": "\"https://www.acs.org/funding/grants/acs-hach-high-school-chemistry-classroom-grant.html\"",
+    "description": "The ACS-Hach High School Chemistry Classroom Grants support ideas that enhance classroom learning, foster student development, and reveal the wonders of chemistry.",
+    "amount": "Up to $1,800",
+    "deadline": "2025 date TBA",
+    "eligibility": "For high school chemistry educators teaching in a U.S. or U.S. territory school.",
+    "tags": [
+      "High School",
+      "Classroom Supplies",
+      "Foundation",
+      "Professional Development",
+      "Classroom Grant"
+    ]
+  },
+  {
+    "title": "Gravely and Paige Grants for STEM Teachers(\"https://afcea.users.membersuite.com/community/competitions/competition-details/512d674c-00aa-ccfd-fba4-0b4752ac9e6e\")",
+    "organization": "Gravely and Paige Grants for STEM Teachers",
+    "website": "\"https://afcea.users.membersuite.com/community/competitions/competition-details/512d674c-00aa-ccfd-fba4-0b4752ac9e6e\"",
+    "description": "The Gravely and Paige Grants provide grants for elementary schools and middle schools in the United States to promote STEM innovation in the classroom, with an emphasis on academic programs.",
+    "amount": "Up to $2,000",
+    "deadline": "September 30, 2025",
+    "eligibility": "Teachers specializing in STEM subjects at U.S. elementary or middle schools, particularly those serving economically disadvantaged students, are prioritized for these awards. Selection criteria include the teacher’s expertise, the potential for effective use of the grant, and financial need. Applicants must submit a detailed proposal outlining their project, a budget detailing fund utilization, and a letter of recommendation from their school’s principal.",
+    "tags": [
+      "Classroom Supplies",
+      "Special Education",
+      "Middle School",
+      "Elementary",
+      "STEAM"
+    ]
+  },
+  {
+    "title": "AIAA Foundation Classroom Grant Program(\"https://www.aiaa.org/get-involved/students-educators/aiaa-foundation-classroom-grant-program\")",
+    "organization": "AIAA Foundation Classroom Grant Program",
+    "website": "\"https://www.aiaa.org/get-involved/students-educators/aiaa-foundation-classroom-grant-program\"",
+    "description": "A clear connection to science, technology, engineering, or mathematics (STEM) with an emphasis on aerospace must be included in the grant proposal.",
+    "amount": "Varies",
+    "deadline": "September 30",
+    "eligibility": "Grant proposals must explicitly link to STEM fields with a special focus on aerospace. Eligible applicants are K-12 classroom teachers, with funds disbursed directly to their schools. Teachers must be active AIAA Educator Associate members before the grant is awarded. Note that each school may receive a maximum of two grants annually. Moreover, allocated funds must be exclusively used for the expenses detailed in the original application.",
+    "tags": [
+      "Classroom Supplies",
+      "Special Education",
+      "Foundation",
+      "Classroom Grant",
+      "Technology",
+      "STEAM"
+    ]
+  },
+  {
+    "title": "NCTM’s Mathematics Education Trust(\"https://www.nctm.org/grants/\")",
+    "organization": "NCTM’s Mathematics Education Trust",
+    "website": "\"https://www.nctm.org/grants/\"",
+    "description": "Funding ranges from $490 to $10,000 and is available to help math teachers, prospective teachers, and other math educators improve the teaching and learning of mathematics.",
+    "amount": "Up to $24,000",
+    "deadline": "May 1 and November 1",
+    "eligibility": "",
+    "tags": [
+      "STEAM"
+    ]
+  },
+  {
+    "title": "Application Requirements: The guidelines for each grant are unique. Please see the list of awards(\"https://www.nctm.org/grants/\") to find the specific requirements.",
+    "organization": "Application Requirements: The guidelines for each grant are unique. Please see the list of awards",
+    "website": "\"https://www.nctm.org/grants/\"",
+    "description": "",
+    "amount": "",
+    "deadline": "",
+    "eligibility": "",
+    "tags": []
+  },
+  {
+    "title": "National Science Foundation Discovery Research Grant(\"https://www.nsf.gov/funding/pgm_summ.jsp?pims_id=500047\")",
+    "organization": "National Science Foundation Discovery Research Grant",
+    "website": "\"https://www.nsf.gov/funding/pgm_summ.jsp?pims_id=500047\"",
+    "description": "NSF offers this ed-tech grant to provide funding for STEM programs for pre-K through grade 12 educators with financial need.",
+    "amount": "Varies",
+    "deadline": "Submit a full grant proposal by the first Wednesday in October each year.",
+    "eligibility": "",
+    "tags": [
+      "Foundation",
+      "Early Childhood",
+      "STEAM"
+    ]
+  },
+  {
+    "title": "Application Requirements: Choose the award on the list(\"https://new.nsf.gov/funding/opportunities/discovery-research-prek-12-drk-12\") to review the specific guidelines.",
+    "organization": "Application Requirements: Choose the award on the list",
+    "website": "\"https://new.nsf.gov/funding/opportunities/discovery-research-prek-12-drk-12\"",
+    "description": "",
+    "amount": "",
+    "deadline": "",
+    "eligibility": "",
+    "tags": [
+      "Foundation"
+    ]
+  },
+  {
+    "title": "ASM’s Kishor M. Kulkarni Distinguished High School Teacher Award(\"https://www.asmfoundation.org/who-we-impact/teachers/educator-awards/\")",
+    "organization": "ASM’s Kishor M. Kulkarni Distinguished High School Teacher Award",
+    "website": "\"https://www.asmfoundation.org/who-we-impact/teachers/educator-awards/\"",
+    "description": "A grant to recognize the accomplishments of a high school science teacher who has demonstrated a significant and sustained impact on pre-college-age students.",
+    "amount": "$2,500",
+    "deadline": "June 30",
+    "eligibility": "Eligible candidates for this opportunity must be either full- or part-time high school teachers actively employed in the USA or Canada. Ideal candidates are those who have previously received ASM Foundation K-12 Teacher Grants or have graduated from the ASM Materials Camp Teachers Camp program. Additionally, any ASM member can submit a qualified application or nomination for consideration.",
+    "tags": [
+      "High School",
+      "Classroom Supplies",
+      "Foundation",
+      "Classroom Grant",
+      "STEAM"
+    ]
+  },
+  {
+    "title": "Edward C. Roy Jr. Award for Excellence in K-8 Earth Science Teaching(\"https://www.americangeosciences.org/education/awards/roy\")",
+    "organization": "Edward C. Roy Jr. Award for Excellence in K-8 Earth Science Teaching",
+    "website": "\"https://www.americangeosciences.org/education/awards/roy\"",
+    "description": "The award is designed to recognize one teacher of grades K-8 each year for their leadership and innovation in earth science education.",
+    "amount": "$2,500 and $1,500 grants to attend NSTA Conference",
+    "deadline": "January 17, 2025",
+    "eligibility": "Must be full-time K-8 earth science teachers in the United States or United Kingdom, demonstrating a comprehensive approach to instruction. Required application materials include an essay, a detailed CV or resume, a recommendation letter from the principal, two additional recommendations from educational peers, and a standout earth science lesson plan.",
+    "tags": [
+      "Classroom Supplies",
+      "STEAM"
+    ]
+  },
+  {
+    "title": "Innovative Technology Education Fund(\"https://innovteched.com/\")",
+    "organization": "Innovative Technology Education Fund",
+    "website": "\"https://innovteched.com/\"",
+    "description": "Supports the integration of innovative technology in education to improve engagement and learning outcomes.",
+    "amount": "Varies",
+    "deadline": "October 31, 2024",
+    "eligibility": "Grants are typically awarded for a one-year period. Applicants must have the endorsement and backing of their superintendent or head of school, as well as their Information Technology department. Recipients are required to showcase adherence to grant conditions via quarterly reports, mid-project visits, and a final report. Eligible applicants are those whose charter has been in effect for at least three years. Proposals can target individual or multiple grade levels, whole schools, or involve partnership with a 501(c)(3) nonprofit organization that supports students and/or teachers from accredited or charter schools.",
+    "tags": [
+      "Foundation",
+      "Technology",
+      "STEAM"
+    ]
+  },
+  {
+    "title": "Captain Planet Foundation’s Project Learning Garden Program(\"https://captainplanetfoundation.org/contest/\")",
+    "organization": "Captain Planet Foundation’s Project Learning Garden Program",
+    "website": "\"https://captainplanetfoundation.org/contest/\"",
+    "description": "Provides elementary schools with resources to create and maintain school gardens that support inquiry-based, hands-on STEAM learning. Through outdoor laboratories, students engage in real-world science and nutrition education, connecting standard learning objectives to practical applications in gardening and cooking.",
+    "amount": "Package valued at $7,500",
+    "deadline": "Ongoing",
+    "eligibility": "Open to U.S. elementary schools only. Schools receive garden beds, seeds, soil, tools, a mobile cooking cart with a Vitamix blender, access to garden-based lessons, literacy materials, and online training for teachers. Program also includes a sponsor-led volunteer day for garden installation.",
+    "tags": [
+      "Classroom Supplies",
+      "Elementary",
+      "Literacy",
+      "Foundation",
+      "Professional Development",
+      "STEAM"
+    ]
+  },
+  {
+    "title": "Emerging Teacher-Leaders in Elementary School Mathematics Grant(\"https://www.nctm.org/uploadedFiles/Grants_and_Awards/Grants/2024_Winter/Info/emerging%20teacher-leaders%20in%20elementary%20school%20mathematics%20grant_application.pdf\")",
+    "organization": "Emerging Teacher-Leaders in Elementary School Mathematics Grant",
+    "website": "\"https://www.nctm.org/uploadedFiles/Grants_and_Awards/Grants/2024_Winter/Info/emerging%20teacher-leaders%20in%20elementary%20school%20mathematics%20grant_application.pdf\"",
+    "description": "Supports elementary school teachers (grades pre-K through 5) in developing mathematics content expertise and becoming leaders in math instruction within their schools or districts. The grant focuses on strengthening teachers’ knowledge through professional development and classroom-based implementation, ultimately enhancing math teaching and learning. Literacy Education Grants for Teachers and Schools",
+    "amount": "Up to $6,000",
+    "deadline": "November 1",
+    "eligibility": "Eligible applicants include pre-K to grade 5 classroom teachers with at least three years of teaching experience who regularly teach mathematics, as well as full-time math coaches or math teachers. Applicants must be NCTM Essential or Premium members and obtain support from their principal. Funds may be used for professional development in mathematics, teacher stipends, materials for in-service programs, and instructional materials, but cannot cover travel, lodging, or food expenses.",
+    "tags": [
+      "Classroom Supplies",
+      "Elementary",
+      "Literacy",
+      "Professional Development",
+      "Early Childhood",
+      "STEAM"
+    ]
+  },
+  {
+    "title": "Believe in Reading(\"https://www.believeinreading.org/grant-guidelines/\")",
+    "organization": "Believe in Reading",
+    "website": "\"https://www.believeinreading.org/grant-guidelines/\"",
+    "description": "Believe in Reading awards grants to existing and provably successful literacy programs.",
+    "amount": "Up to $10,000",
+    "deadline": "Ongoing",
+    "eligibility": "Believe in Reading grants are for established literacy programs with a proven track record of success for at least two years. Eligible recipients must possess tax-exempt status under IRS Code Section 501(c)(3) or an equivalent for educational entities, including public libraries; applications from organizations with pending tax-exempt status are not accepted. The grants support a wide range of reading and literacy initiatives for all ages, encompassing adult literacy, English as a second language (ESL) projects, and Braille programs for the blind or visually impaired.",
+    "tags": [
+      "Literacy"
+    ]
+  },
+  {
+    "title": "Snapdragon Book Foundation(\"http://snapdragonbookfoundation.org/application/\")",
+    "organization": "Snapdragon Book Foundation",
+    "website": "\"http://snapdragonbookfoundation.org/application/\"",
+    "description": "Provides books for school/educational libraries for disadvantaged students.",
+    "amount": "Up to $20,000",
+    "deadline": "",
+    "eligibility": "",
+    "tags": [
+      "Literacy",
+      "Foundation"
+    ]
+  },
+  {
+    "title": "Deadline: Applications are due in February. Please check the application(\"http://snapdragonbookfoundation.org/application/\") for the precise deadline.",
+    "organization": "Deadline: Applications are due in February. Please check the application",
+    "website": "\"http://snapdragonbookfoundation.org/application/\"",
+    "description": "",
+    "amount": "",
+    "deadline": "",
+    "eligibility": "School libraries within alternative education settings, such as youth detention centers, in the United States and its territories that cater to disadvantaged youth are eligible to apply for grants. Individuals working across multiple schools may submit separate applications for each or a single district-wide application if they oversee multiple libraries. Libraries serving pre-K–12 students are eligible, and previous applicants, including past grant recipients, are welcome to reapply annually.",
+    "tags": [
+      "Early Childhood",
+      "Foundation"
+    ]
+  },
+  {
+    "title": "International Literacy Association(\"https://www.literacyworldwide.org/get-involved/awards-recognition/awards-grants/diane-lapp-james-flood-professional-collaborator-award\")",
+    "organization": "International Literacy Association",
+    "website": "\"https://www.literacyworldwide.org/get-involved/awards-recognition/awards-grants/diane-lapp-james-flood-professional-collaborator-award\"",
+    "description": "The Diane Lapp & James Flood Professional Collaborator Award recognizes an ongoing professional collaboration between two or more people who regularly contribute to the professional knowledge base of literacy educators.",
+    "amount": "",
+    "deadline": "February 3, 2025",
+    "eligibility": "Collaborative teams of two or three professionals, known for functioning as a unit in their field, can be nominated or self-nominated for recognition. These teams should have a history of working together on various projects that have significantly contributed to the advancement of literacy education over a minimum of five years. Eligible contributions may include a body of research and practice evidenced through publications or impactful field-based projects that explore new literacies, foster literacy collaborations, or enhance literacy engagement. To qualify, all team members must be members in good standing with the ILA and maintain their active membership throughout the nomination process.",
+    "tags": [
+      "Professional Development",
+      "Literacy"
+    ]
+  },
+  {
+    "title": "Dollar General Literacy Foundation(\"https://www.dgliteracy.org/grant-programs/?#youth-literacy-grants\")",
+    "organization": "Dollar General Literacy Foundation",
+    "website": "\"https://www.dgliteracy.org/grant-programs/?#youth-literacy-grants\"",
+    "description": "Schools, public libraries, and nonprofit organizations that help students who are below grade level or having trouble reading are eligible to apply.",
+    "amount": "Varies",
+    "deadline": "The next cycle will be open in March 2025.",
+    "eligibility": "Schools, public libraries, and nonprofit organizations that help students who are below grade level or having trouble reading are eligible to apply.",
+    "tags": [
+      "Literacy",
+      "Foundation"
+    ]
+  },
+  {
+    "title": "The Lois Lenski Covey Foundation(\"https://www.loislenskicovey.org/bookmobile-grants/\")",
+    "organization": "The Lois Lenski Covey Foundation",
+    "website": "\"https://www.loislenskicovey.org/bookmobile-grants/\"",
+    "description": "The Lois Lenski Covey Foundation awards grants to organizations that operate a lending bookmobile that travels into neighborhoods populated by underserved youth. For preschool through 8th grade.",
+    "amount": "$500 to $3,000",
+    "deadline": "September 1",
+    "eligibility": "The LLCF Bookmobile Grant Program offers funding for acquiring books for children from preschool through grade 8, encompassing early reader to young adult and hi-lo books. Eligibility is restricted to organizations operating within the United States, its territories, or commonwealths. Recipients of the grant are required to submit a brief questionnaire post-award and provide evidence of how the grant funds were utilized.",
+    "tags": [
+      "Early Childhood",
+      "Literacy",
+      "Foundation"
+    ]
+  },
+  {
+    "title": "American Association of School Librarians Innovative Reading Grant(\"http://www.ala.org/aasl/awards/innovative\")",
+    "organization": "American Association of School Librarians Innovative Reading Grant",
+    "website": "\"http://www.ala.org/aasl/awards/innovative\"",
+    "description": "Members of the American Association of School Librarians can apply for this curriculum grant that supports planning and implementing programs to encourage students, particularly struggling learners, to read.",
+    "amount": "$2,500",
+    "deadline": "February 1",
+    "eligibility": "Applicant must be a personal member of AASL.",
+    "tags": [
+      "Literacy"
+    ]
+  },
+  {
+    "title": "The Laura Bush Foundation Grant(\"https://www.bushcenter.org/explore-our-work/taking-action/laura-bush-foundation-for-americas-libraries.html\")",
+    "organization": "The Laura Bush Foundation Grant",
+    "website": "\"https://www.bushcenter.org/explore-our-work/taking-action/laura-bush-foundation-for-americas-libraries.html\"",
+    "description": "This grant is intended for high-needs schools with a significant percentage of students who qualify for the free or reduced lunch program. Arts Education Grants for Teachers and Schools",
+    "amount": "Varies",
+    "deadline": "December 6, 2024",
+    "eligibility": "To qualify, a certified librarian or paid professional must oversee the school library’s collection and maintenance. Eligible public schools must meet Title 1 criteria, including neighborhood, charter, and magnet schools. Private and parochial schools can apply if at least 50% of their students are eligible for financial aid. Applicants must have a designated library space accessible for all students to borrow books. The application requires a digital signature from the principal and complete financial documentation, including the school/district’s W-9 and a voided check or bank letter. Grant funds are strictly for purchasing books, e-books, and magazines for the school library, excluding expenditures on shelving, furniture, equipment, staffing, software, videos, classroom book sets, or similar items.",
+    "tags": [
+      "Special Education",
+      "Classroom Supplies",
+      "Arts Education",
+      "Literacy",
+      "Foundation",
+      "Professional Development",
+      "Technology"
+    ]
+  },
+  {
+    "title": "Max and Victoria Dreyfus Foundation(\"https://www.mvdreyfusfoundation.org/application-guidelines\")",
+    "organization": "Max and Victoria Dreyfus Foundation",
+    "website": "\"https://www.mvdreyfusfoundation.org/application-guidelines\"",
+    "description": "The Max and Victoria Dreyfus Foundation awards grants to organizations for whom a small amount of money can make a big difference. The foundation will consider requests to support schools, museums, and cultural and performing arts programs.",
+    "amount": "$1,000 to $20,000",
+    "deadline": "",
+    "eligibility": "",
+    "tags": [
+      "Foundation",
+      "Arts Education"
+    ]
+  },
+  {
+    "title": "Deadline:(\"https://www.mvdreyfusfoundation.org/contact\") Check the program page for the timeline and deadlines.(\"https://www.mvdreyfusfoundation.org/contact\")",
+    "organization": "Deadline:",
+    "website": "\"https://www.mvdreyfusfoundation.org/contact\"",
+    "description": "",
+    "amount": "",
+    "deadline": "",
+    "eligibility": "The application demands comprehensive details including organizational and contact information, confirmation of nonprofit status, a history of past awards or requests, and a synopsis of the organization’s mission and programs. It also requires a plan for the potential use of funds, a formal letter of request, the most recent IRS Form 990 (if applicable), a detailed program budget (for program support applicants), and a copy of the IRS letter confirming Section 501(c)(3) status, excluding private foundations. If the application progresses, additional financial data, such as the last four IRS Form 990s, will be necessary for further evaluation.",
+    "tags": [
+      "Foundation"
+    ]
+  },
+  {
+    "title": "Classics for Kids Foundation(\"https://classicsforkids.org/apply-for-a-grant/\")",
+    "organization": "Classics for Kids Foundation",
+    "website": "\"https://classicsforkids.org/apply-for-a-grant/\"",
+    "description": "Money granted toward the following instruments: violins, violas, cellos, and double basses.",
+    "amount": "Varies",
+    "deadline": "June 30, September 30, December 31, and March 31",
+    "eligibility": "Schools and nonprofit organizations dedicated to incorporating fine instruments into their programs and can demonstrate a genuine need alongside a commitment to raising matching funds are ideal candidates for the Classics for Kids matching grant program.",
+    "tags": [
+      "Foundation"
+    ]
+  },
+  {
+    "title": "The Mockingbird Foundation(\"https://mbird.org/grants/apply/\")",
+    "organization": "The Mockingbird Foundation",
+    "website": "\"https://mbird.org/grants/apply/\"",
+    "description": "The Mockingbird Foundation offers competitive grants to schools and nonprofit organizations that effect improvements in music education for children.",
+    "amount": "$100 to $10,000",
+    "deadline": "",
+    "eligibility": "",
+    "tags": [
+      "Foundation",
+      "Arts Education"
+    ]
+  },
+  {
+    "title": "Deadline: Check the key dates(\"https://mbird.org/grants/apply/\") on the program website.",
+    "organization": "Deadline: Check the key dates",
+    "website": "\"https://mbird.org/grants/apply/\"",
+    "description": "",
+    "amount": "",
+    "deadline": "",
+    "eligibility": "Grants are awarded to 501(c)(3) nonprofits, entities with a 501(c)(3) sponsor, or U.S. government entities like public schools, with required proof of status for full proposals. Exclusions include individuals, research, fundraising events, religious or political programs, and non-U.S. organizations. Applicants must ensure non-discriminatory practices in employment and service delivery.",
+    "tags": []
+  },
+  {
+    "title": "P. Buckley Moss Foundation for Children’s Education Grants(\"http://www.mossfoundation.org/\")",
+    "organization": "P. Buckley Moss Foundation for Children’s Education Grants",
+    "website": "\"http://www.mossfoundation.org/\"",
+    "description": "For projects within schools serving all children that integrate the arts into educational programs. The purpose for this grant is to aid and support teachers who wish to establish or maintain an effective learning tool using the visual arts within the school day.",
+    "amount": "Up to $1,000",
+    "deadline": "September 30",
+    "eligibility": "Candidates must focus on creating and applying a hands-on visual art educational resource.",
+    "tags": [
+      "Foundation",
+      "Arts Education"
+    ]
+  },
+  {
+    "title": "Mr. Holland’s Opus Foundation(\"http://www.mhopus.org/\")",
+    "organization": "Mr. Holland’s Opus Foundation",
+    "website": "\"http://www.mhopus.org/\"",
+    "description": "Provides vital support services to school districts and new musical instruments to underfunded music programs nationwide. Gives under-represented youth access to the many benefits of music education, leading them to success in school, and inspiring creativity and expression through playing music. Education Grants for School Grounds",
+    "amount": "Varies",
+    "deadline": "",
+    "eligibility": "By invitation only",
+    "tags": [
+      "Foundation",
+      "Arts Education"
+    ]
+  },
+  {
+    "title": "Good Sports(\"https://www.goodsports.org/apply/\")",
+    "organization": "Good Sports",
+    "website": "\"https://www.goodsports.org/apply/\"",
+    "description": "Get sports equipment for your school.",
+    "amount": "Equipment from their catalog",
+    "deadline": "Ongoing through May of the school year",
+    "eligibility": "Eligibility for this program requires U.S.-based organizations serving youths ages 3 to 18, particularly in high-poverty areas, with a participation fee of $299 or less. The organization should ensure regular access to physical activity, which does not need to be a structured sports program. For schools, there must be no tuition charges, and over half of the students should qualify for free or reduced lunch.",
+    "tags": [
+      "Classroom Supplies"
+    ]
+  },
+  {
+    "title": "Whole Kids Foundation(\"https://www.wholekidsfoundation.org/programs/school-gardens-grant\")",
+    "organization": "Whole Kids Foundation",
+    "website": "\"https://www.wholekidsfoundation.org/programs/school-gardens-grant\"",
+    "description": "Through their Garden Grant Program, schools and nonprofit organizations turn outdoor spaces into powerful hands-on learning gardens that connect kids with food, spark their curiosity, and support classroom curriculum.",
+    "amount": "$3,000",
+    "deadline": "2025 date TBA",
+    "eligibility": "K–12 schools or nonprofit organizations in the United States and Canada.",
+    "tags": [
+      "Classroom Supplies",
+      "Foundation"
+    ]
+  },
+  {
+    "title": "KidsGardening Youth Garden Grants(\"https://kidsgardening.org/grant-opportunities/youth-garden-grant-24/\")",
+    "organization": "KidsGardening Youth Garden Grants",
+    "website": "\"https://kidsgardening.org/grant-opportunities/youth-garden-grant-24/\"",
+    "description": "Supports school and youth educational garden projects that enhance the quality of life for students and their communities.",
+    "amount": "Varies, includes cash and gardening supplies",
+    "deadline": "2025 date TBA",
+    "eligibility": "Schools, nonprofits, and youth programs across the United States can apply. Grant awardees are required to complete a year-end report including 5 to 10 digital images of the garden, parental release forms to accompany images of children, and a narrative about the impact of the garden program.",
+    "tags": [
+      "Technology"
+    ]
+  },
+  {
+    "title": "The Herb Society of America’s Classroom Herb Garden Grants(\"https://www.herbsociety.org/get-involved/grants-scholarships/grant-details.html\")",
+    "organization": "The Herb Society of America’s Classroom Herb Garden Grants",
+    "website": "\"https://www.herbsociety.org/get-involved/grants-scholarships/grant-details.html\"",
+    "description": "Supports the development of herb gardens in schools as a way to stimulate students’ interest in herb planting and gardening.",
+    "amount": "$300",
+    "deadline": "Varies depending on the grant. Check the program site for more details.",
+    "eligibility": "K-12 educators who are interested in creating or maintaining an herb garden with their students. The project should have a clear educational outcome related to the study of herbs.",
+    "tags": [
+      "Professional Development",
+      "Classroom Supplies"
+    ]
+  }
+]

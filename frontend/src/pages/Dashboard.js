@@ -14,8 +14,8 @@ const Dashboard = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
-  const [sortBy, setSortBy] = useState('deadline');
-  const [sortOrder, setSortOrder] = useState('asc');
+  const [sortBy, setSortBy] = useState('createdAt');
+  const [sortOrder, setSortOrder] = useState('desc');
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [totalItems, setTotalItems] = useState(0);
@@ -206,12 +206,12 @@ const Dashboard = () => {
                   onChange={handleSortChange}
                   className="sort-select"
                 >
+                  <option value="createdAt-desc">Newest First</option>
                   <option value="deadline-asc">Deadline: Earliest First</option>
                   <option value="deadline-desc">Deadline: Latest First</option>
                   <option value="amount-desc">Amount: Highest First</option>
                   <option value="amount-asc">Amount: Lowest First</option>
                   <option value="popularity-desc">Most Popular</option>
-                  <option value="createdAt-desc">Newest First</option>
                 </select>
               </div>
             </div>

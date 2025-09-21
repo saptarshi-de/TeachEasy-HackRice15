@@ -3,8 +3,7 @@ const { body, validationResult, query } = require('express-validator');
 const Scholarship = require('../models/Scholarship');
 const User = require('../models/User');
 
-// Simple JavaScript matcher
-const SimpleMatcher = require('../utils/simpleMatcher');
+// Note: AI matching removed for project reorganization
 
 const router = express.Router();
 
@@ -33,21 +32,25 @@ router.get('/', validateScholarshipQuery, async (req, res) => {
       subjects,
       fundingTypes,
       search,
-      sortBy = 'deadline',
-      sortOrder = 'asc'
+      sortBy = 'createdAt',
+      sortOrder = 'desc'
     } = req.query;
 
     // Build filter object
-    const filter = { isActive: true, isVerified: true };
+    const filter = { isActive: true };
+    const andConditions = [];
 
     // Amount range filter
     if (minAmount || maxAmount) {
-      filter.$or = [];
+      const amountConditions = [];
       if (minAmount) {
-        filter.$or.push({ 'amount.max': { $gte: parseFloat(minAmount) } });
+        amountConditions.push({ 'amount.max': { $gte: parseFloat(minAmount) } });
       }
       if (maxAmount) {
-        filter.$or.push({ 'amount.min': { $lte: parseFloat(maxAmount) } });
+        amountConditions.push({ 'amount.min': { $lte: parseFloat(maxAmount) } });
+      }
+      if (amountConditions.length > 0) {
+        andConditions.push({ $or: amountConditions });
       }
     }
 
@@ -65,9 +68,23 @@ router.get('/', validateScholarshipQuery, async (req, res) => {
       filter['eligibility.fundingTypes'] = { $in: fundingArray };
     }
 
-    // Text search
+    // Text search - search in title, organization, and description
     if (search) {
-      filter.$text = { $search: search };
+      const searchRegex = new RegExp(search, 'i');
+      andConditions.push({
+        $or: [
+          { title: searchRegex },
+          { organization: searchRegex },
+          { description: searchRegex },
+          { 'eligibility.subjects': searchRegex },
+          { tags: searchRegex }
+        ]
+      });
+    }
+
+    // Apply and conditions if any
+    if (andConditions.length > 0) {
+      filter.$and = andConditions;
     }
 
     // Build sort object
@@ -93,16 +110,7 @@ router.get('/', validateScholarshipQuery, async (req, res) => {
     const hasNextPage = page < totalPages;
     const hasPrevPage = page > 1;
 
-    // Add AI matching if user profile is provided
-    if (req.query.userProfile) {
-      try {
-        const userProfile = JSON.parse(req.query.userProfile);
-        const matcher = new SimpleMatcher();
-        scholarships = matcher.scoreAllScholarships(userProfile, scholarships);
-      } catch (error) {
-        console.error('AI matching error:', error);
-      }
-    }
+    // Note: AI matching removed for project reorganization
 
     res.json({
       scholarships,

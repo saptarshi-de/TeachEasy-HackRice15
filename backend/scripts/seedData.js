@@ -311,7 +311,7 @@ async function seedDatabase() {
     });
 
     console.log('\n🚀 You can now start the server with: npm run dev');
-    console.log('📖 API Documentation: http://localhost:5000/api/health');
+    console.log('📖 API Documentation: http://localhost:5001/api/health');
 
   } catch (error) {
     console.error('❌ Error seeding database:', error);
