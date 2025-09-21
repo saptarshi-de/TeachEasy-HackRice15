@@ -1,7 +1,16 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import ApplicationConfirmationModal from './ApplicationConfirmationModal';
 
-const ScholarshipCard = ({ scholarship, onBookmark, isBookmarked }) => {
+const ScholarshipCard = ({ scholarship, onBookmark, isBookmarked, onApplicationSubmitted, userId }) => {
+  const [showApplicationModal, setShowApplicationModal] = useState(false);
+  const [hasApplied, setHasApplied] = useState(false);
+
+  // Check if user has applied to this scholarship
+  useEffect(() => {
+    const applied = localStorage.getItem(`applied_${scholarship._id}`);
+    setHasApplied(applied === 'true');
+  }, [scholarship._id]);
   const formatAmount = (min, max) => {
     if (min === max) {
       return `$${min.toLocaleString()}`;
@@ -48,6 +57,37 @@ const ScholarshipCard = ({ scholarship, onBookmark, isBookmarked }) => {
     if (status.includes('Apply Soon')) return '#FF9800';
     if (status.includes('Open')) return '#4CAF50';
     return '#9E9E9E';
+  };
+
+  const handleApplyClick = (e) => {
+    e.preventDefault();
+    
+    // Check if user has already applied to this scholarship
+    const hasApplied = localStorage.getItem(`applied_${scholarship._id}`);
+    
+    if (hasApplied) {
+      // If they've already applied, show the popup
+      setShowApplicationModal(true);
+    } else {
+      // First time clicking - redirect to external site and mark as "clicked"
+      localStorage.setItem(`clicked_apply_${scholarship._id}`, 'true');
+      window.open(scholarship.application.applicationUrl, '_blank');
+      
+      // Show popup after a short delay to ask if they applied
+      setTimeout(() => {
+        setShowApplicationModal(true);
+      }, 1000);
+    }
+  };
+
+  const handleApplicationSubmitted = (application) => {
+    // Mark as applied in localStorage and update state
+    localStorage.setItem(`applied_${scholarship._id}`, 'true');
+    setHasApplied(true);
+    
+    if (onApplicationSubmitted) {
+      onApplicationSubmitted(application);
+    }
   };
 
   return (
@@ -115,14 +155,12 @@ const ScholarshipCard = ({ scholarship, onBookmark, isBookmarked }) => {
           </Link>
           
           {scholarship.application && scholarship.application.applicationUrl && (
-            <a
-              href={scholarship.application.applicationUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-primary btn-sm apply-btn"
+            <button
+              onClick={handleApplyClick}
+              className={`btn btn-sm apply-btn ${hasApplied ? 'btn-success' : 'btn-primary'}`}
             >
-              Apply Now
-            </a>
+              {hasApplied ? '✓ Applied' : 'Apply Now'}
+            </button>
           )}
         </div>
         
@@ -134,6 +172,14 @@ const ScholarshipCard = ({ scholarship, onBookmark, isBookmarked }) => {
           <span>{isBookmarked ? '★' : '☆'}</span>
         </button>
       </div>
+
+      <ApplicationConfirmationModal
+        isOpen={showApplicationModal}
+        onClose={() => setShowApplicationModal(false)}
+        scholarship={scholarship}
+        onApplicationSubmitted={handleApplicationSubmitted}
+        userId={userId}
+      />
     </div>
   );
 };

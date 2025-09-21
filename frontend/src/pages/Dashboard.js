@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -20,6 +20,7 @@ const Dashboard = () => {
   const [totalPages, setTotalPages] = useState(1);
   const [totalItems, setTotalItems] = useState(0);
   const [bookmarkedIds, setBookmarkedIds] = useState(new Set());
+  const [showSuccessMessage, setShowSuccessMessage] = useState('');
   
   const [filters, setFilters] = useState({
     minAmount: '',
@@ -37,7 +38,7 @@ const Dashboard = () => {
   }, [isAuthenticated, navigate]);
 
   // Fetch scholarships
-  const fetchScholarships = async () => {
+  const fetchScholarships = useCallback(async () => {
     try {
       setLoading(true);
       setError(null);
@@ -65,10 +66,10 @@ const Dashboard = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [currentPage, sortBy, sortOrder, searchTerm, filters]);
 
   // Fetch user's bookmarks
-  const fetchBookmarks = async () => {
+  const fetchBookmarks = useCallback(async () => {
     if (!isAuthenticated) return;
     
     try {
@@ -82,7 +83,7 @@ const Dashboard = () => {
     } catch (err) {
       console.error('Error fetching bookmarks:', err);
     }
-  };
+  }, [isAuthenticated, getAccessTokenSilently, user?.sub]);
 
   // Handle bookmark toggle
   const handleBookmark = async (scholarshipId) => {
@@ -112,6 +113,11 @@ const Dashboard = () => {
     } catch (err) {
       console.error('Error toggling bookmark:', err);
     }
+  };
+
+  const handleApplicationSubmitted = (application) => {
+    setShowSuccessMessage(`Application submitted for "${application.scholarshipTitle}"!`);
+    setTimeout(() => setShowSuccessMessage(''), 5000);
   };
 
   // Handle filter changes
@@ -156,7 +162,7 @@ const Dashboard = () => {
       fetchScholarships();
       fetchBookmarks();
     }
-  }, [isAuthenticated, currentPage, sortBy, sortOrder, filters, searchTerm]);
+  }, [isAuthenticated, currentPage, sortBy, sortOrder, filters, searchTerm, fetchScholarships, fetchBookmarks]);
 
   if (!isAuthenticated) {
     return <Loading />;
@@ -216,6 +222,14 @@ const Dashboard = () => {
               </div>
             </div>
 
+            {/* Success Message */}
+            {showSuccessMessage && (
+              <div className="success-message">
+                <span>{showSuccessMessage}</span>
+                <button onClick={() => setShowSuccessMessage('')}>×</button>
+              </div>
+            )}
+
             {/* Results */}
             {loading ? (
               <Loading />
@@ -244,6 +258,8 @@ const Dashboard = () => {
                       scholarship={scholarship}
                       onBookmark={handleBookmark}
                       isBookmarked={bookmarkedIds.has(scholarship._id)}
+                      onApplicationSubmitted={handleApplicationSubmitted}
+                      userId={user?.sub || user?.email || 'anonymous'}
                     />
                   ))}
                 </div>

@@ -22,30 +22,7 @@ const DiscountCard = ({ discount }) => {
   };
 
   const getCategoryIcon = (category) => {
-    switch (category) {
-      case 'Technology':
-        return '💻';
-      case 'Travel':
-        return '✈️';
-      case 'Shopping':
-        return '🛒';
-      case 'Entertainment':
-        return '🎬';
-      case 'Health & Wellness':
-        return '🏥';
-      case 'Education':
-        return '📚';
-      case 'Books & Media':
-        return '📖';
-      case 'Food & Dining':
-        return '🍽️';
-      case 'Insurance':
-        return '🛡️';
-      case 'Financial Services':
-        return '💰';
-      default:
-        return '🎁';
-    }
+    return '';
   };
 
   const getStatusColor = (status) => {
@@ -127,16 +104,16 @@ const DiscountCard = ({ discount }) => {
       {discount.requirements && (
         <div className="discount-requirements">
           {discount.requirements.teacherId && (
-            <span className="requirement-badge teacher-id">📋 Teacher ID Required</span>
+            <span className="requirement-badge teacher-id">Teacher ID Required</span>
           )}
           {discount.requirements.membership !== 'None' && (
             <span className="requirement-badge membership">
-              👥 {discount.requirements.membership} Membership
+              {discount.requirements.membership} Membership
             </span>
           )}
           {discount.requirements.minimumSpend && (
             <span className="requirement-badge minimum-spend">
-              💰 Min. ${discount.requirements.minimumSpend}
+              Min. ${discount.requirements.minimumSpend}
             </span>
           )}
         </div>
@@ -153,7 +130,7 @@ const DiscountCard = ({ discount }) => {
               onClick={handleCopyPromoCode}
               title="Copy promo code"
             >
-              📋
+              Copy
             </button>
           </div>
         </div>
@@ -178,7 +155,7 @@ const DiscountCard = ({ discount }) => {
           </span>
           {discount.status === 'Active' && isExpiringSoon() && (
             <span className="expiring-soon">
-              ⏰ Expires in {getDaysUntilExpiration()} days
+              Expires in {getDaysUntilExpiration()} days
             </span>
           )}
         </div>
@@ -192,9 +169,6 @@ const DiscountCard = ({ discount }) => {
         >
           Visit Website
         </button>
-        {discount.featured && (
-          <span className="featured-badge">⭐ Featured</span>
-        )}
       </div>
 
       {/* Tags */}

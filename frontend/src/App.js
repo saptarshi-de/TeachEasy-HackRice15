@@ -8,6 +8,7 @@ import Profile from './pages/Profile';
 import ScholarshipDetail from './pages/ScholarshipDetail';
 import DiscountsPage from './pages/DiscountsPage';
 import EssayAssist from "./pages/EssayAssist";
+import MyApplications from './pages/MyApplications';
 import Loading from './components/Loading';
 import './App.css';
 
@@ -29,6 +30,7 @@ function App() {
           <Route path="/scholarship/:id" element={<ScholarshipDetail />} />
           <Route path="/discounts" element={<DiscountsPage />} />
           <Route path="/essay-assist" element={<EssayAssist />} />
+          <Route path="/my-applications" element={<MyApplications />} />
         </Routes>
       </main>
     </div>

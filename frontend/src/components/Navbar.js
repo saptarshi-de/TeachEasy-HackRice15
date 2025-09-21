@@ -14,7 +14,6 @@ const Navbar = () => {
     <nav className="navbar">
       <div className="navbar-content">
         <Link to="/" className="navbar-brand">
-          <span>🎓</span>
           TeachEasy
         </Link>
         
@@ -43,6 +42,14 @@ const Navbar = () => {
                   className={isActive('/dashboard') ? 'active' : ''}
                 >
                   Dashboard
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/my-applications" 
+                  className={isActive('/my-applications') ? 'active' : ''}
+                >
+                  My Applications
                 </Link>
               </li>
               <li>

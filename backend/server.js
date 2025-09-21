@@ -12,6 +12,7 @@ const scholarshipRoutes = require('./routes/scholarships');
 const userRoutes = require('./routes/users');
 const discountRoutes = require('./routes/discounts');
 const essayAssistRoutes = require("./routes/essayAssist");
+const applicationRoutes = require('./routes/applications');
 
 const app = express();
 const PORT = process.env.PORT || 5001;
@@ -48,6 +49,7 @@ app.use('/api/scholarships', scholarshipRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/discounts', discountRoutes);
 app.use("/api/essay-assist", essayAssistRoutes);
+app.use('/api/applications', applicationRoutes);
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {

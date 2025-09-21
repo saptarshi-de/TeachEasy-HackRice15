@@ -34,7 +34,7 @@ const FeaturedDiscounts = () => {
     return (
       <section className="featured-discounts">
         <div className="featured-discounts-header">
-          <h2>🎁 Teacher Discounts & Savings</h2>
+          <h2>Teacher Discounts & Savings</h2>
           <p>Exclusive deals and discounts available to educators</p>
         </div>
         <div className="loading-container">
@@ -49,7 +49,7 @@ const FeaturedDiscounts = () => {
     return (
       <section className="featured-discounts">
         <div className="featured-discounts-header">
-          <h2>🎁 Teacher Discounts & Savings</h2>
+          <h2>Teacher Discounts & Savings</h2>
           <p>Exclusive deals and discounts available to educators</p>
         </div>
         <div className="error-message">
@@ -63,7 +63,7 @@ const FeaturedDiscounts = () => {
     return (
       <section className="featured-discounts">
         <div className="featured-discounts-header">
-          <h2>🎁 Teacher Discounts & Savings</h2>
+          <h2>Teacher Discounts & Savings</h2>
           <p>Exclusive deals and discounts available to educators</p>
         </div>
         <div className="no-discounts">
@@ -76,7 +76,7 @@ const FeaturedDiscounts = () => {
   return (
     <section className="featured-discounts">
       <div className="featured-discounts-header">
-        <h2>🎁 Teacher Discounts & Savings</h2>
+        <h2>Teacher Discounts & Savings</h2>
         <p>Exclusive deals and discounts available to educators</p>
         <Link to="/discounts" className="view-all-btn">
           View All Discounts →

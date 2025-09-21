@@ -169,7 +169,7 @@ const EssayAssist = () => {
   return (
     <div className="essay-assist-container">
       <div className="essay-assist-header">
-        <h1>🎓 Essay Assist</h1>
+        <h1>Essay Assist</h1>
         <p>Get personalized help with your grant applications</p>
       </div>
 
@@ -191,19 +191,19 @@ const EssayAssist = () => {
                 onClick={() => fileInputRef.current?.click()}
                 disabled={isUploading}
               >
-                {isUploading ? 'Uploading...' : '📄 Upload Resume'}
+                {isUploading ? 'Uploading...' : 'Upload Resume'}
               </button>
               <p className="upload-info">Supports PDF, DOC, DOCX, and TXT files</p>
             </div>
           </div>
         ) : (
-          <div className="resume-status">
-            <h3>✅ Resume Uploaded</h3>
-            <p>File: {resumeStatus.fileName}</p>
-            <button className="delete-btn" onClick={deleteResume}>
-              🗑️ Delete Resume
-            </button>
-          </div>
+            <div className="resume-status">
+              <h3>Resume Uploaded</h3>
+              <p>File: {resumeStatus.fileName}</p>
+              <button className="delete-btn" onClick={deleteResume}>
+                Delete Resume
+              </button>
+            </div>
         )}
       </div>
 
@@ -252,8 +252,8 @@ const EssayAssist = () => {
         </div>
       </div>
 
-      <div className="suggestions">
-        <h4>💡 Try asking:</h4>
+        <div className="suggestions">
+          <h4>Try asking:</h4>
         <div className="suggestion-chips">
           <button 
             className="suggestion-chip"
