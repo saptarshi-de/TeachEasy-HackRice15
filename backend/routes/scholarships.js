@@ -3,32 +3,17 @@ const { body, validationResult, query } = require('express-validator');
 const Scholarship = require('../models/Scholarship');
 const User = require('../models/User');
 
-// AI Matcher is optional (Python module)
-let AIMatcher = null;
-try {
-  AIMatcher = require('../scrapers/ai_matcher');
-} catch (error) {
-  console.log('AI Matcher not available (Python module)');
-}
-
-// Use simple JavaScript matcher as fallback
+// Simple JavaScript matcher
 const SimpleMatcher = require('../utils/simpleMatcher');
 
 const router = express.Router();
 
-// Validation middleware
+// Simple validation middleware
 const validateScholarshipQuery = [
-  query('page').optional().isInt({ min: 1 }).withMessage('Page must be a positive integer'),
-  query('limit').optional().isInt({ min: 1, max: 100 }).withMessage('Limit must be between 1 and 100'),
-  query('minAmount').optional().isFloat({ min: 0 }).withMessage('Min amount must be a positive number'),
-  query('maxAmount').optional().isFloat({ min: 0 }).withMessage('Max amount must be a positive number'),
-  query('regions').optional().isString().withMessage('Regions must be a string'),
-  query('gradeLevels').optional().isString().withMessage('Grade levels must be a string'),
-  query('subjects').optional().isString().withMessage('Subjects must be a string'),
-  query('fundingTypes').optional().isString().withMessage('Funding types must be a string'),
-  query('search').optional().isString().withMessage('Search must be a string'),
-  query('sortBy').optional().isIn(['deadline', 'amount', 'popularity', 'createdAt']).withMessage('Invalid sort field'),
-  query('sortOrder').optional().isIn(['asc', 'desc']).withMessage('Sort order must be asc or desc')
+  query('page').optional().isInt({ min: 1 }),
+  query('limit').optional().isInt({ min: 1, max: 100 }),
+  query('minAmount').optional().isFloat({ min: 0 }),
+  query('maxAmount').optional().isFloat({ min: 0 })
 ];
 
 // GET /api/scholarships - Get all scholarships with filtering and pagination
@@ -44,7 +29,6 @@ router.get('/', validateScholarshipQuery, async (req, res) => {
       limit = 20,
       minAmount,
       maxAmount,
-      regions,
       gradeLevels,
       subjects,
       fundingTypes,
@@ -67,25 +51,15 @@ router.get('/', validateScholarshipQuery, async (req, res) => {
       }
     }
 
-    // Region filter
-    if (regions) {
-      const regionArray = regions.split(',').map(r => r.trim());
-      filter['eligibility.regions'] = { $in: regionArray };
-    }
-
-    // Grade level filter
+    // Array filters
     if (gradeLevels) {
       const gradeArray = gradeLevels.split(',').map(g => g.trim());
       filter['eligibility.gradeLevels'] = { $in: gradeArray };
     }
-
-    // Subject filter
     if (subjects) {
       const subjectArray = subjects.split(',').map(s => s.trim());
       filter['eligibility.subjects'] = { $in: subjectArray };
     }
-
-    // Funding type filter
     if (fundingTypes) {
       const fundingArray = fundingTypes.split(',').map(f => f.trim());
       filter['eligibility.fundingTypes'] = { $in: fundingArray };
@@ -123,20 +97,10 @@ router.get('/', validateScholarshipQuery, async (req, res) => {
     if (req.query.userProfile) {
       try {
         const userProfile = JSON.parse(req.query.userProfile);
-        
-        if (AIMatcher) {
-          // Use Python AI matcher if available
-          const matcher = new AIMatcher();
-          matcher.prepare_scholarship_data(scholarships);
-          scholarships = matcher.score_all_scholarships(userProfile, scholarships);
-        } else {
-          // Use simple JavaScript matcher as fallback
-          const matcher = new SimpleMatcher();
-          scholarships = matcher.scoreAllScholarships(userProfile, scholarships);
-        }
+        const matcher = new SimpleMatcher();
+        scholarships = matcher.scoreAllScholarships(userProfile, scholarships);
       } catch (error) {
         console.error('AI matching error:', error);
-        // Continue without AI matching if there's an error
       }
     }
 

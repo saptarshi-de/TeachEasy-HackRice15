@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
+import FeaturedDiscounts from '../components/FeaturedDiscounts';
 
 const Home = () => {
   const { isAuthenticated } = useAuth0();
@@ -94,6 +95,9 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      {/* Featured Discounts Section */}
+      <FeaturedDiscounts />
 
       {/* CTA Section */}
       <section className="p-8">

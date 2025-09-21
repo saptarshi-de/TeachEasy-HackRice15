@@ -122,17 +122,35 @@ const ScholarshipDetail = () => {
     });
   };
 
-  const getDeadlineStatus = (deadline) => {
-    const date = new Date(deadline);
+  const getStatusColor = (status) => {
+    if (status.includes('Expired')) return '#F44336';
+    if (status.includes('Deadline Approaching')) return '#FF5722';
+    if (status.includes('Apply Soon')) return '#FF9800';
+    if (status.includes('Open')) return '#4CAF50';
+    return '#9E9E9E';
+  };
+
+  const getStatusInfo = (scholarship) => {
+    if (scholarship.status) {
+      return {
+        text: scholarship.status,
+        class: 'text-white',
+        style: { backgroundColor: getStatusColor(scholarship.status) },
+        daysLeft: scholarship.daysUntilDeadline
+      };
+    }
+    
+    // Fallback to old calculation if no status field
+    const date = new Date(scholarship.application.deadline);
     const now = new Date();
     const diffTime = date - now;
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
     
-    if (diffDays < 0) return { text: 'Expired', class: 'text-red-600' };
-    if (diffDays === 0) return { text: 'Due today', class: 'text-red-600' };
-    if (diffDays === 1) return { text: 'Due tomorrow', class: 'text-red-600' };
-    if (diffDays <= 7) return { text: `Due in ${diffDays} days`, class: 'text-yellow-600' };
-    return { text: `Due in ${diffDays} days`, class: 'text-green-600' };
+    if (diffDays < 0) return { text: 'Expired', class: 'text-red-600', style: {} };
+    if (diffDays === 0) return { text: 'Due today', class: 'text-red-600', style: {} };
+    if (diffDays === 1) return { text: 'Due tomorrow', class: 'text-red-600', style: {} };
+    if (diffDays <= 7) return { text: `Due in ${diffDays} days`, class: 'text-yellow-600', style: {} };
+    return { text: `Due in ${diffDays} days`, class: 'text-green-600', style: {} };
   };
 
   if (loading) {
@@ -164,7 +182,7 @@ const ScholarshipDetail = () => {
     );
   }
 
-  const deadlineStatus = getDeadlineStatus(scholarship.application.deadline);
+  const statusInfo = getStatusInfo(scholarship);
 
   return (
     <div className="p-6">
@@ -185,14 +203,48 @@ const ScholarshipDetail = () => {
                 <div className="flex justify-between items-start mb-4">
                   <div>
                     <h1 className="text-3xl font-bold mb-2">{scholarship.title}</h1>
-                    <p className="text-lg text-gray-600">{scholarship.organization}</p>
+                    <p className="text-lg text-gray-600">
+                      {scholarship.organization}
+                      {scholarship.source && (
+                        <span className="text-sm text-gray-500 ml-2">• {scholarship.source}</span>
+                      )}
+                    </p>
+                    {scholarship.matchLevel && (
+                      <div className="mt-2">
+                        <span 
+                          className="px-2 py-1 rounded text-xs font-medium text-white"
+                          style={{
+                            backgroundColor: scholarship.matchLevel === 'High' ? '#4CAF50' :
+                                           scholarship.matchLevel === 'Medium' ? '#FF9800' :
+                                           scholarship.matchLevel === 'Low' ? '#FFC107' : '#9E9E9E'
+                          }}
+                        >
+                          {scholarship.matchLevel} Match
+                        </span>
+                        {scholarship.overallScore && (
+                          <span className="ml-2 text-xs text-gray-600">
+                            Score: {(scholarship.overallScore * 100).toFixed(0)}%
+                          </span>
+                        )}
+                      </div>
+                    )}
                   </div>
                   <div className="text-right">
                     <div className="text-2xl font-bold text-green-600 mb-1">
                       {formatAmount(scholarship.amount.min, scholarship.amount.max)}
                     </div>
-                    <div className={`text-sm font-medium ${deadlineStatus.class}`}>
-                      {deadlineStatus.text}
+                    <div className="flex flex-col items-end gap-1">
+                      <span 
+                        className="px-2 py-1 rounded text-xs font-medium text-white"
+                        style={statusInfo.style}
+                      >
+                        {statusInfo.text}
+                      </span>
+                      {statusInfo.daysLeft && (
+                        <span className="text-xs text-gray-600">
+                          {statusInfo.daysLeft} days left
+                        </span>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -248,16 +300,6 @@ const ScholarshipDetail = () => {
                         </div>
                       )}
 
-                      {scholarship.eligibility.regions && scholarship.eligibility.regions.length > 0 && (
-                        <div>
-                          <span className="font-medium text-gray-600">Regions:</span>
-                          <div className="flex flex-wrap gap-1 mt-1">
-                            {scholarship.eligibility.regions.map((region, index) => (
-                              <span key={index} className="badge badge-primary">{region}</span>
-                            ))}
-                          </div>
-                        </div>
-                      )}
 
                       {scholarship.eligibility.fundingTypes && scholarship.eligibility.fundingTypes.length > 0 && (
                         <div>

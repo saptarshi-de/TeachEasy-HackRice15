@@ -9,7 +9,7 @@ const Profile = () => {
   
   const [profile, setProfile] = useState({
     schoolName: '',
-    schoolRegion: '',
+    schoolDistrict: '',
     gradeLevel: [],
     subjects: [],
     fundingNeeds: [],
@@ -119,10 +119,27 @@ const Profile = () => {
     return <div className="p-6"><div className="spinner"></div></div>;
   }
 
-  const regions = ['North', 'South', 'East', 'West', 'Central', 'Northeast', 'Northwest', 'Southeast', 'Southwest'];
   const gradeLevels = ['Pre-K', 'K', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', 'College', 'Adult Education'];
   const subjects = ['Mathematics', 'Science', 'English/Language Arts', 'Social Studies', 'History', 'Art', 'Music', 'Physical Education', 'Foreign Language', 'Computer Science', 'Special Education', 'ESL/ELL', 'Reading', 'Writing'];
   const fundingNeeds = ['Classroom Supplies', 'Technology Equipment', 'Books and Materials', 'Professional Development', 'Field Trips', 'Special Programs', 'Student Support', 'Classroom Furniture', 'STEM Materials'];
+  const districts = [
+    // Houston Area
+    'Houston ISD', 'Katy ISD', 'Cypress-Fairbanks ISD', 'Spring ISD', 'Klein ISD', 'Aldine ISD',
+    'Fort Bend ISD', 'Alief ISD', 'Pasadena ISD', 'Clear Creek ISD', 'Pearland ISD',
+    // Dallas Area
+    'Dallas ISD', 'Plano ISD', 'Richardson ISD', 'Garland ISD', 'Mesquite ISD', 'Irving ISD',
+    'Frisco ISD', 'McKinney ISD', 'Allen ISD', 'Lewisville ISD',
+    // Austin Area
+    'Austin ISD', 'Round Rock ISD', 'Leander ISD', 'Pflugerville ISD', 'Lake Travis ISD',
+    // San Antonio Area
+    'San Antonio ISD', 'Northside ISD', 'North East ISD', 'Judson ISD', 'East Central ISD',
+    // Other Major Districts
+    'Fort Worth ISD', 'Arlington ISD', 'El Paso ISD', 'Corpus Christi ISD', 'Lubbock ISD',
+    'Amarillo ISD', 'Laredo ISD', 'Brownsville ISD', 'McAllen ISD', 'Waco ISD',
+    'Killeen ISD', 'Tyler ISD', 'Beaumont ISD', 'Bryan ISD', 'College Station ISD',
+    // Statewide/National
+    'Statewide', 'National', 'International'
+  ];
 
   return (
     <div className="p-6">
@@ -195,19 +212,20 @@ const Profile = () => {
                 </div>
 
                 <div className="form-group">
-                  <label className="form-label">School Region *</label>
+                  <label className="form-label">School District *</label>
                   <select
-                    value={profile.schoolRegion}
-                    onChange={(e) => handleInputChange('schoolRegion', e.target.value)}
+                    value={profile.schoolDistrict}
+                    onChange={(e) => handleInputChange('schoolDistrict', e.target.value)}
                     className="form-select"
                     required
                   >
-                    <option value="">Select a region</option>
-                    {regions.map(region => (
-                      <option key={region} value={region}>{region}</option>
+                    <option value="">Select a district</option>
+                    {districts.map(district => (
+                      <option key={district} value={district}>{district}</option>
                     ))}
                   </select>
                 </div>
+
               </div>
             </div>
 

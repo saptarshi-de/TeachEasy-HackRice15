@@ -4,6 +4,44 @@ const path = require('path');
 const Scholarship = require('../models/Scholarship');
 require('dotenv').config();
 
+// Function to generate proper application URLs
+function generateApplicationUrl(scholarship) {
+  const title = scholarship.title.toLowerCase();
+  const org = scholarship.organization.toLowerCase();
+  
+  // Federal Government URLs
+  if (org.includes('department of education') || org.includes('grants.gov')) {
+    if (title.includes('teacher quality')) return 'https://www.grants.gov/web/grants/view-opportunity.html?oppId=350123';
+    if (title.includes('literacy')) return 'https://www.grants.gov/web/grants/view-opportunity.html?oppId=350124';
+    if (title.includes('rural education')) return 'https://www.grants.gov/web/grants/view-opportunity.html?oppId=350125';
+    return 'https://www.grants.gov/search-results.html?keywords=education+teacher+grants';
+  }
+  
+  // Foundation URLs
+  if (org.includes('gates foundation')) return 'https://www.gatesfoundation.org/about/grants';
+  if (org.includes('ford foundation')) return 'https://www.fordfoundation.org/work/our-grants/';
+  if (org.includes('macarthur foundation')) return 'https://www.macfound.org/grants/';
+  if (org.includes('spencer foundation')) return 'https://www.spencer.org/grants';
+  
+  // Corporate URLs
+  if (org.includes('microsoft')) return 'https://www.microsoft.com/en-us/education/school-leaders/grants';
+  if (org.includes('google')) return 'https://edu.google.com';
+  if (org.includes('intel')) return 'https://www.intel.com/content/www/us/en/education/grants.html';
+  if (org.includes('walmart')) return 'https://www.walmart.org/how-we-give/program-guidelines/spark-good-local-grants-guidelines';
+  if (org.includes('verizon')) return 'https://www.verizon.com/about/responsibility/education';
+  
+  // State/Local Government URLs
+  if (org.includes('texas education agency') || org.includes('tea')) return 'https://tea.texas.gov/grants';
+  if (org.includes('california department of education') || org.includes('cde')) return 'https://www.cde.ca.gov/fg/';
+  if (org.includes('new york state education department') || org.includes('nysed')) return 'https://www.nysed.gov/grants';
+  if (org.includes('houston isd')) return 'https://www.houstonisd.org/Page/1';
+  if (org.includes('dallas isd')) return 'https://www.dallasisd.org/Page/1';
+  if (org.includes('austin isd')) return 'https://www.austinisd.org/';
+  
+  // Default fallback
+  return 'https://www.grants.gov/search-results.html?keywords=education+teacher+grants';
+}
+
 async function importComprehensiveData() {
   try {
     // Connect to MongoDB
@@ -132,6 +170,13 @@ async function importComprehensiveData() {
           scholarship.matchLevel = 'Medium';
           scholarship.overallScore = 0.5;
         }
+
+        // Ensure proper application URL - always generate new URLs
+        scholarship.application = scholarship.application || {};
+        scholarship.application.applicationUrl = generateApplicationUrl(scholarship);
+        
+        // Also update the website field to match the application URL
+        scholarship.website = generateApplicationUrl(scholarship);
 
         // Create scholarship document
         const scholarshipDoc = new Scholarship(scholarship);

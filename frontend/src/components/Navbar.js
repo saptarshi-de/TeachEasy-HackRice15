@@ -27,6 +27,14 @@ const Navbar = () => {
               Home
             </Link>
           </li>
+          <li>
+            <Link 
+              to="/discounts" 
+              className={isActive('/discounts') ? 'active' : ''}
+            >
+              Discounts
+            </Link>
+          </li>
           {isAuthenticated && (
             <>
               <li>

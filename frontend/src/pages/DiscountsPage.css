@@ -1,0 +1,289 @@
+.discounts-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.discounts-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.discounts-header h1 {
+  color: #333;
+  font-size: 2.5em;
+  margin: 0 0 10px 0;
+  font-weight: 700;
+}
+
+.discounts-subtitle {
+  color: #666;
+  font-size: 1.1em;
+  margin: 0;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.discounts-content {
+  margin-top: 20px;
+}
+
+/* Loading */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #667eea;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 15px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-container p {
+  color: #666;
+  font-size: 1.1em;
+  margin: 0;
+}
+
+/* Stats */
+.discounts-stats {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 30px;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  border: 1px solid #e9ecef;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-number {
+  display: block;
+  font-size: 2em;
+  font-weight: 700;
+  color: #667eea;
+  margin-bottom: 5px;
+}
+
+.stat-label {
+  color: #666;
+  font-size: 0.9em;
+  font-weight: 500;
+}
+
+/* Discounts Grid */
+.discounts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+/* No Discounts */
+.no-discounts {
+  text-align: center;
+  padding: 60px 20px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  border: 1px solid #e9ecef;
+}
+
+.no-discounts-icon {
+  font-size: 4em;
+  margin-bottom: 20px;
+}
+
+.no-discounts h3 {
+  color: #333;
+  font-size: 1.5em;
+  margin: 0 0 10px 0;
+}
+
+.no-discounts p {
+  color: #666;
+  font-size: 1.1em;
+  margin: 0 0 20px 0;
+}
+
+.clear-filters-btn {
+  background: #667eea;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1em;
+}
+
+.clear-filters-btn:hover {
+  background: #5a6fd8;
+  transform: translateY(-1px);
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.page-btn {
+  background: white;
+  border: 1px solid #dee2e6;
+  color: #333;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 0.9em;
+  min-width: 40px;
+}
+
+.page-btn:hover:not(.disabled) {
+  background: #f8f9fa;
+  border-color: #adb5bd;
+}
+
+.page-btn.active {
+  background: #667eea;
+  color: white;
+  border-color: #667eea;
+}
+
+.page-btn.disabled {
+  background: #f8f9fa;
+  color: #6c757d;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.ellipsis {
+  padding: 8px 4px;
+  color: #6c757d;
+  font-weight: 600;
+}
+
+/* Error Message */
+.error-message {
+  text-align: center;
+  padding: 60px 20px;
+  background: #f8d7da;
+  border: 1px solid #f5c6cb;
+  border-radius: 12px;
+  color: #721c24;
+}
+
+.error-message h2 {
+  margin: 0 0 15px 0;
+  font-size: 1.5em;
+}
+
+.error-message p {
+  margin: 0 0 20px 0;
+  font-size: 1.1em;
+}
+
+.retry-btn {
+  background: #dc3545;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1em;
+}
+
+.retry-btn:hover {
+  background: #c82333;
+  transform: translateY(-1px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .discounts-page {
+    padding: 15px;
+  }
+  
+  .discounts-header h1 {
+    font-size: 2em;
+  }
+  
+  .discounts-subtitle {
+    font-size: 1em;
+  }
+  
+  .discounts-stats {
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+  }
+  
+  .stat-number {
+    font-size: 1.5em;
+  }
+  
+  .discounts-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  .pagination {
+    gap: 4px;
+  }
+  
+  .page-btn {
+    padding: 6px 10px;
+    font-size: 0.8em;
+    min-width: 35px;
+  }
+}
+
+@media (max-width: 480px) {
+  .discounts-header h1 {
+    font-size: 1.8em;
+  }
+  
+  .discounts-stats {
+    padding: 10px;
+  }
+  
+  .stat-number {
+    font-size: 1.3em;
+  }
+  
+  .loading-container {
+    padding: 40px 15px;
+  }
+  
+  .no-discounts {
+    padding: 40px 15px;
+  }
+  
+  .no-discounts-icon {
+    font-size: 3em;
+  }
+}

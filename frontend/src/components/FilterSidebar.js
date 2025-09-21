@@ -1,7 +1,6 @@
 import React from 'react';
 
 const FilterSidebar = ({ filters, onFilterChange, onClearFilters }) => {
-  const regions = ['North', 'South', 'East', 'West', 'Central', 'Northeast', 'Northwest', 'Southeast', 'Southwest'];
   const districts = [
     // Houston Area
     'Houston ISD', 'Katy ISD', 'Cypress-Fairbanks ISD', 'Spring ISD', 'Klein ISD', 'Aldine ISD',
@@ -75,23 +74,6 @@ const FilterSidebar = ({ filters, onFilterChange, onClearFilters }) => {
         </div>
       </div>
 
-      {/* Regions */}
-      <div className="filter-group">
-        <label className="filter-label">Regions</label>
-        <div className="filter-options">
-          {regions.map(region => (
-            <div key={region} className="filter-option">
-              <input
-                type="checkbox"
-                id={`region-${region}`}
-                checked={filters.regions?.includes(region) || false}
-                onChange={() => handleCheckboxChange('regions', region)}
-              />
-              <label htmlFor={`region-${region}`}>{region}</label>
-            </div>
-          ))}
-        </div>
-      </div>
 
       {/* School Districts */}
       <div className="filter-group">

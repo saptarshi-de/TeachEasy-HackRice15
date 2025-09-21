@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
 import Profile from './pages/Profile';
 import ScholarshipDetail from './pages/ScholarshipDetail';
+import DiscountsPage from './pages/DiscountsPage';
 import Loading from './components/Loading';
 import './App.css';
 
@@ -25,6 +26,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/scholarship/:id" element={<ScholarshipDetail />} />
+          <Route path="/discounts" element={<DiscountsPage />} />
         </Routes>
       </main>
     </div>

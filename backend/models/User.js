@@ -147,9 +147,7 @@ userSchema.pre('save', function(next) {
   next();
 });
 
-// Index for efficient queries
-userSchema.index({ auth0Id: 1 });
-userSchema.index({ email: 1 });
+// Index for efficient queries (auth0Id and email already have unique indexes)
 userSchema.index({ schoolRegion: 1 });
 userSchema.index({ gradeLevel: 1 });
 userSchema.index({ subjects: 1 });

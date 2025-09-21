@@ -18,12 +18,12 @@ const Dashboard = () => {
   const [sortOrder, setSortOrder] = useState('asc');
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [totalItems, setTotalItems] = useState(0);
   const [bookmarkedIds, setBookmarkedIds] = useState(new Set());
   
   const [filters, setFilters] = useState({
     minAmount: '',
     maxAmount: '',
-    regions: [],
     gradeLevels: [],
     subjects: [],
     fundingTypes: []
@@ -50,7 +50,6 @@ const Dashboard = () => {
         ...(searchTerm && { search: searchTerm }),
         ...(filters.minAmount && { minAmount: filters.minAmount }),
         ...(filters.maxAmount && { maxAmount: filters.maxAmount }),
-        ...(filters.regions.length > 0 && { regions: filters.regions.join(',') }),
         ...(filters.gradeLevels.length > 0 && { gradeLevels: filters.gradeLevels.join(',') }),
         ...(filters.subjects.length > 0 && { subjects: filters.subjects.join(',') }),
         ...(filters.fundingTypes.length > 0 && { fundingTypes: filters.fundingTypes.join(',') })
@@ -59,6 +58,7 @@ const Dashboard = () => {
       const response = await axios.get(`/api/scholarships?${params}`);
       setScholarships(response.data.scholarships);
       setTotalPages(response.data.pagination.totalPages);
+      setTotalItems(response.data.pagination.totalItems);
     } catch (err) {
       setError('Failed to fetch scholarships. Please try again.');
       console.error('Error fetching scholarships:', err);
@@ -128,7 +128,6 @@ const Dashboard = () => {
     setFilters({
       minAmount: '',
       maxAmount: '',
-      regions: [],
       gradeLevels: [],
       subjects: [],
       fundingTypes: []
@@ -200,7 +199,7 @@ const Dashboard = () => {
               
               <div className="results-header">
                 <div className="results-count">
-                  {loading ? 'Loading...' : `${scholarships.length} opportunities found`}
+                  {loading ? 'Loading...' : `${totalItems} opportunities found`}
                 </div>
                 <select
                   value={`${sortBy}-${sortOrder}`}
