@@ -47,14 +47,6 @@ const Navbar = () => {
               </li>
               <li>
                 <Link 
-                  to="/essay-assist" 
-                  className={isActive('/essay-assist') ? 'active' : ''}
-                >
-                  Essay Assist
-                </Link>
-              </li>
-              <li>
-                <Link 
                   to="/profile" 
                   className={isActive('/profile') ? 'active' : ''}
                 >

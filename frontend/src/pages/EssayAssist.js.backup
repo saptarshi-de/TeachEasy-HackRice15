@@ -1,0 +1,288 @@
+import React, { useState, useRef, useEffect } from 'react';
+import { useAuth0 } from '@auth0/auth0-react';
+import axios from 'axios';
+import './EssayAssist.css';
+
+const EssayAssist = () => {
+  const { user, isAuthenticated } = useAuth0();
+  const [messages, setMessages] = useState([]);
+  const [inputMessage, setInputMessage] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [resumeStatus, setResumeStatus] = useState({ hasResume: false });
+  const [isUploading, setIsUploading] = useState(false);
+  const fileInputRef = useRef(null);
+  const messagesEndRef = useRef(null);
+
+  const userId = user?.sub || user?.email || 'anonymous';
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      checkResumeStatus();
+      // Add welcome message
+      setMessages([{
+        id: 1,
+        type: 'assistant',
+        content: 'Hello! I\'m your Essay Assist AI. I can help you with grant applications by analyzing your resume and providing personalized advice. First, please upload your resume so I can better assist you with your applications.',
+        timestamp: new Date()
+      }]);
+    }
+  }, [isAuthenticated, userId, checkResumeStatus]);
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const checkResumeStatus = async () => {
+    try {
+      const response = await axios.get(`/api/essay-assist/resume-status/${userId}`);
+      setResumeStatus(response.data);
+    } catch (error) {
+      console.error('Error checking resume status:', error);
+    }
+  };
+
+  const handleFileUpload = async (event) => {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    setIsUploading(true);
+    const formData = new FormData();
+    formData.append('resume', file);
+    formData.append('userId', userId);
+
+    try {
+      const response = await axios.post('/api/essay-assist/upload-resume', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+
+      setResumeStatus({ 
+        hasResume: true, 
+        fileName: response.data.fileName,
+        uploadedAt: new Date()
+      });
+
+      // Add success message
+      const newMessage = {
+        id: Date.now(),
+        type: 'assistant',
+        content: `Great! I've successfully analyzed your resume (${response.data.fileName}). Now I can provide personalized advice for your grant applications. What would you like help with?`,
+        timestamp: new Date()
+      };
+      setMessages(prev => [...prev, newMessage]);
+
+    } catch (error) {
+      console.error('Upload error:', error);
+      const errorMessage = {
+        id: Date.now(),
+        type: 'assistant',
+        content: `Sorry, I couldn't process your resume. ${error.response?.data?.error || 'Please try again with a different file.'}`,
+        timestamp: new Date()
+      };
+      setMessages(prev => [...prev, errorMessage]);
+    } finally {
+      setIsUploading(false);
+    }
+  };
+
+  const handleSendMessage = async () => {
+    if (!inputMessage.trim() || isLoading) return;
+
+    const userMessage = {
+      id: Date.now(),
+      type: 'user',
+      content: inputMessage,
+      timestamp: new Date()
+    };
+
+    setMessages(prev => [...prev, userMessage]);
+    setInputMessage('');
+    setIsLoading(true);
+
+    try {
+      const response = await axios.post('/api/essay-assist/chat', {
+        message: inputMessage,
+        userId: userId
+      });
+
+      const assistantMessage = {
+        id: Date.now() + 1,
+        type: 'assistant',
+        content: response.data.response,
+        timestamp: new Date()
+      };
+
+      setMessages(prev => [...prev, assistantMessage]);
+    } catch (error) {
+      console.error('Chat error:', error);
+      const errorMessage = {
+        id: Date.now() + 1,
+        type: 'assistant',
+        content: `Sorry, I'm having trouble responding right now. ${error.response?.data?.error || 'Please try again later.'}`,
+        timestamp: new Date()
+      };
+      setMessages(prev => [...prev, errorMessage]);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      handleSendMessage();
+    }
+  };
+
+  const deleteResume = async () => {
+    try {
+      await axios.delete(`/api/essay-assist/resume/${userId}`);
+      setResumeStatus({ hasResume: false });
+      const newMessage = {
+        id: Date.now(),
+        type: 'assistant',
+        content: 'Your resume has been deleted. You can upload a new one anytime.',
+        timestamp: new Date()
+      };
+      setMessages(prev => [...prev, newMessage]);
+    } catch (error) {
+      console.error('Delete error:', error);
+    }
+  };
+
+  if (!isAuthenticated) {
+    return (
+      <div className="essay-assist-container">
+        <div className="auth-required">
+          <h2>Essay Assist</h2>
+          <p>Please sign in to access the Essay Assist feature.</p>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="essay-assist-container">
+      <div className="essay-assist-header">
+        <h1> Essay Assist</h1>
+        <p>Get personalized help with your grant applications</p>
+      </div>
+
+      <div className="resume-section">
+        {!resumeStatus.hasResume ? (
+          <div className="upload-section">
+            <h3>Upload Your Resume</h3>
+            <p>Upload your resume to get personalized grant application advice</p>
+            <div className="upload-area">
+              <input
+                type="file"
+                ref={fileInputRef}
+                onChange={handleFileUpload}
+                accept=".pdf,.doc,.docx,.txt"
+                style={{ display: 'none' }}
+              />
+              <button
+                className="upload-btn"
+                onClick={() => fileInputRef.current?.click()}
+                disabled={isUploading}
+              >
+                {isUploading ? 'Uploading...' : '📄 Upload Resume'}
+              </button>
+              <p className="upload-info">Supports PDF, DOC, DOCX, and TXT files</p>
+            </div>
+          </div>
+        ) : (
+          <div className="resume-status">
+            <h3>✅ Resume Uploaded</h3>
+            <p>File: {resumeStatus.fileName}</p>
+            <button className="delete-btn" onClick={deleteResume}>
+              🗑️ Delete Resume
+            </button>
+          </div>
+        )}
+      </div>
+
+      <div className="chat-container">
+        <div className="messages-container">
+          {messages.map((message) => (
+            <div key={message.id} className={`message ${message.type}`}>
+              <div className="message-content">
+                {message.content}
+              </div>
+              <div className="message-time">
+                {message.timestamp.toLocaleTimeString()}
+              </div>
+            </div>
+          ))}
+          {isLoading && (
+            <div className="message assistant">
+              <div className="message-content">
+                <div className="typing-indicator">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+              </div>
+            </div>
+          )}
+          <div ref={messagesEndRef} />
+        </div>
+
+        <div className="input-container">
+          <textarea
+            value={inputMessage}
+            onChange={(e) => setInputMessage(e.target.value)}
+            onKeyPress={handleKeyPress}
+            placeholder="Ask me anything about grant applications..."
+            rows="3"
+            disabled={isLoading}
+          />
+          <button
+            onClick={handleSendMessage}
+            disabled={!inputMessage.trim() || isLoading}
+            className="send-btn"
+          >
+            Send
+          </button>
+        </div>
+      </div>
+
+      <div className="suggestions">
+        <h4>💡 Try asking:</h4>
+        <div className="suggestion-chips">
+          <button 
+            className="suggestion-chip"
+            onClick={() => setInputMessage("How can I highlight my teaching experience in grant applications?")}
+          >
+            Highlight teaching experience
+          </button>
+          <button 
+            className="suggestion-chip"
+            onClick={() => setInputMessage("What are the key elements of a compelling grant proposal?")}
+          >
+            Grant proposal tips
+          </button>
+          <button 
+            className="suggestion-chip"
+            onClick={() => setInputMessage("How should I structure my grant application essay?")}
+          >
+            Essay structure
+          </button>
+          <button 
+            className="suggestion-chip"
+            onClick={() => setInputMessage("What specific examples from my background should I mention?")}
+          >
+            Personal examples
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default EssayAssist;
