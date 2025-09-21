@@ -29,7 +29,17 @@ app.use(express.urlencoded({ extended: true }));
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/teacheasy')
-.then(() => console.log('✅ Connected to MongoDB'))
+.then(async () => {
+  console.log('✅ Connected to MongoDB');
+  
+  // Ensure WeAreTeachers scholarships are present
+  try {
+    const ensureWeAreTeachers = require('./ensure_weareteachers');
+    await ensureWeAreTeachers();
+  } catch (error) {
+    console.error('⚠️  Warning: Could not ensure WeAreTeachers scholarships:', error.message);
+  }
+})
 .catch(err => console.error('❌ MongoDB connection error:', err));
 
 // Routes
