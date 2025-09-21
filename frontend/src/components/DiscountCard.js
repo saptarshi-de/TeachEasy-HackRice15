@@ -9,7 +9,7 @@ const DiscountCard = ({ discount }) => {
       case 'Fixed Amount':
         return '#17a2b8';
       case 'Free Shipping':
-        return '#6f42c1';
+        return '#D2B48C';
       case 'Buy One Get One':
         return '#fd7e14';
       case 'Special Offer':
@@ -25,38 +25,6 @@ const DiscountCard = ({ discount }) => {
     return '';
   };
 
-  const getStatusColor = (status) => {
-    switch (status) {
-      case 'Active':
-        return '#28a745';
-      case 'Expired':
-        return '#dc3545';
-      case 'Coming Soon':
-        return '#ffc107';
-      default:
-        return '#6c757d';
-    }
-  };
-
-  const formatDate = (dateString) => {
-    return new Date(dateString).toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric'
-    });
-  };
-
-  const getDaysUntilExpiration = () => {
-    const now = new Date();
-    const expiration = new Date(discount.validUntil);
-    const diffTime = expiration - now;
-    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-    return diffDays;
-  };
-
-  const isExpiringSoon = () => {
-    return getDaysUntilExpiration() <= 7 && getDaysUntilExpiration() > 0;
-  };
 
   const handleVisitWebsite = () => {
     window.open(discount.website, '_blank', 'noopener,noreferrer');
@@ -136,30 +104,6 @@ const DiscountCard = ({ discount }) => {
         </div>
       )}
 
-      {/* Validity and status */}
-      <div className="discount-validity">
-        <div className="validity-dates">
-          <span className="valid-from">
-            Valid from: {formatDate(discount.validFrom)}
-          </span>
-          <span className="valid-until">
-            Valid until: {formatDate(discount.validUntil)}
-          </span>
-        </div>
-        <div className="discount-status">
-          <span 
-            className="status-badge"
-            style={{ backgroundColor: getStatusColor(discount.status) }}
-          >
-            {discount.status}
-          </span>
-          {discount.status === 'Active' && isExpiringSoon() && (
-            <span className="expiring-soon">
-              Expires in {getDaysUntilExpiration()} days
-            </span>
-          )}
-        </div>
-      </div>
 
       {/* Action buttons */}
       <div className="discount-actions">

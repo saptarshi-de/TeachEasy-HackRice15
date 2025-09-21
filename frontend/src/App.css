@@ -75,16 +75,33 @@
 
 /* Hero section */
 .hero {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #D2B48C 0%, #CD853F 100%);
   color: white;
   padding: 4rem 0;
   text-align: center;
+  position: relative;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1;
 }
 
 .hero-content {
   max-width: 800px;
   margin: 0 auto;
   padding: 0 1rem;
+  position: relative;
+  z-index: 2;
 }
 
 .hero h1 {
@@ -192,7 +209,7 @@
 }
 
 .apply-btn {
-  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  background: #3b82f6;
   border: none;
   color: white;
   font-weight: 600;
@@ -204,7 +221,7 @@
 }
 
 .apply-btn:hover {
-  background: linear-gradient(135deg, #1d4ed8, #1e40af);
+  background: #1d4ed8;
   transform: translateY(-1px);
   box-shadow: 0 4px 8px rgba(59, 130, 246, 0.4);
   color: white;
@@ -244,7 +261,7 @@
 
 /* Apply Now Button */
 .apply-now-btn {
-  background: linear-gradient(135deg, #10b981, #059669);
+  background: #10b981;
   border: none;
   color: white;
   font-weight: 700;
@@ -260,7 +277,7 @@
 }
 
 .apply-now-btn:hover {
-  background: linear-gradient(135deg, #059669, #047857);
+  background: #059669;
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
   color: white;
@@ -543,13 +560,13 @@
 
 /* Applied Button Styling */
 .btn-success {
-  background: linear-gradient(135deg, #10b981, #059669);
+  background: #10b981;
   color: white;
   border: none;
 }
 
 .btn-success:hover {
-  background: linear-gradient(135deg, #059669, #047857);
+  background: #059669;
   transform: translateY(-1px);
   box-shadow: 0 4px 8px rgba(16, 185, 129, 0.3);
 }

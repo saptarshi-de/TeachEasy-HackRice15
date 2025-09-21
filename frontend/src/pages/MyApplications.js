@@ -93,7 +93,7 @@ const MyApplications = () => {
       case 'Approved': return '#10b981';
       case 'Rejected': return '#ef4444';
       case 'Pending Documents': return '#f59e0b';
-      case 'Submitted': return '#8b5cf6';
+      case 'Submitted': return '#D2B48C';
       default: return '#6b7280';
     }
   };

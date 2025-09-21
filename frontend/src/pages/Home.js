@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 import FeaturedDiscounts from '../components/FeaturedDiscounts';
+import teacherImage from '../images/happy-teacher-school-kid-vector-illustration-background-printing-textile-card-t-shirt-isolated-sticker-cover-board-clipart-graphic-157365204.webp';
 
 const Home = () => {
   const { isAuthenticated } = useAuth0();
@@ -9,7 +10,13 @@ const Home = () => {
   return (
     <div>
       {/* Hero Section */}
-      <section className="hero">
+      <section className="hero" style={{
+        backgroundImage: `url(${teacherImage})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'top',
+        backgroundRepeat: 'no-repeat',
+      }}>
+        <div className="hero-overlay"></div>
         <div className="hero-content">
           <h1>Empowering Educators with Comprehensive Resources</h1>
           <p>
@@ -93,7 +100,7 @@ const Home = () => {
               <div className="text-gray-600">Total Funding Available</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-purple-600 mb-2">1,200+</div>
+              <div className="text-3xl font-bold text-amber-600 mb-2">1,200+</div>
               <div className="text-gray-600">Teachers Helped</div>
             </div>
           </div>

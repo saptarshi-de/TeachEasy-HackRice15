@@ -75,7 +75,7 @@
 .filter-section input:focus,
 .filter-section select:focus {
   outline: none;
-  border-color: #667eea;
+  border-color: #D2B48C;
   box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
 }
 
